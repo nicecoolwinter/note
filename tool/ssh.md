@@ -109,5 +109,5 @@ Push 成功就算大功告成！工作帳號也是類似指令。
 
 完成這些設定之後，以後工作帳號就是 work 取代 github.com，而個人帳號不變（因為是預設）。這樣可以節省不少切換帳號的時間，就代表有更多時間可以專注在其他事情上。
 
-###Reference
+# Reference
 - http://finfin.github.io/2015/01/16/multiple-git-accounts.html
