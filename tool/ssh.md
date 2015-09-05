@@ -1,5 +1,5 @@
 # [轉]同時使用多個 Git 帳號
-- http://finfin.github.io/2015/01/16/multiple-git-accounts.html
+
 
 當你同時擁有兩個以上的 Git 帳號的時候，是怎麼切換帳號的呢？我曾經很手動的git config + 重新載入SSH Key，後來懶的這樣換來換去乾脆直接開 VM。
 Git CLI 並不支援多重帳號，但我們可以透過 SSH 設定來達到多重帳號的功能。以下詳細步驟： （這些設定也適用於其他 Git 服務如 GitLab, BitBucket 等，把 github.com 修改成對應 host 即可）
@@ -108,3 +108,6 @@ Push 成功就算大功告成！工作帳號也是類似指令。
 改動的地方只有一個，把 host (github.com) 改成 work，這樣就可以了。
 
 完成這些設定之後，以後工作帳號就是 work 取代 github.com，而個人帳號不變（因為是預設）。這樣可以節省不少切換帳號的時間，就代表有更多時間可以專注在其他事情上。
+
+###Reference
+- http://finfin.github.io/2015/01/16/multiple-git-accounts.html

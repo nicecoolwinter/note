@@ -14,7 +14,7 @@ git clone https://github.com/ggreer/the_silver_searcher
 - bashrc
 
 ```
- export PATH=$HOME/.mybin:$PATH
+export PATH=$HOME/.mybin:$PATH
 ```
 
 ### build ag
