@@ -13,5 +13,6 @@
 * [Arduino](arduino/README.md)
    * [Resource](arduino/resource.md)
 * [GitHub use](github_use/README.md)
-   * [test](github_use/test.md)
+   * [Git 基本操作](github_use/test.md)
+   * [Gitbook](github_use/gitbook.md)
 
