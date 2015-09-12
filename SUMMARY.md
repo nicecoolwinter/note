@@ -2,10 +2,12 @@
 
 * [Introduction](README.md)
 * [C 語言學習筆記](c/README.md)
-   * [C 型態](c/type.md)
+   * [Type](c/type.md)
    * [Array](array/README.md)
        * [Rand 矩陣相乘](c/array/21.md)
        * [VLA](c/array/vla.md)
+   * [function](c/function.md)
+       * [Scope & Duration](c/scope_&_duration.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vim](tool/vimrc.md)
