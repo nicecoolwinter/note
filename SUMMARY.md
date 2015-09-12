@@ -6,7 +6,7 @@
    * [Array](array/README.md)
        * [Rand 矩陣相乘](c/array/21.md)
        * [VLA](c/array/vla.md)
-   * [function](c/function.md)
+   * [Function](c/function.md)
        * [Scope & Duration](c/scope_&_duration.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
