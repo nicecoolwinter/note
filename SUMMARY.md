@@ -8,6 +8,8 @@
        * [VLA](c/array/vla.md)
    * [Function](c/function.md)
        * [Scope & Duration](c/scope_&_duration.md)
+   * [Other](c/other.md)
+       * [Linux 的 time 指令](c/time.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vim](tool/vimrc.md)
