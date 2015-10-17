@@ -22,4 +22,6 @@
 * [GitHub use](github_use/README.md)
    * [Git 基本操作](github_use/test.md)
    * [Gitbook](github_use/gitbook.md)
+* [OS](os/README.md)
+   * [hw1](os/hw1.md)
 
