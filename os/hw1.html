@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>GitHub use | nicecoolwinter note</title>
+        <title>hw1 | nicecoolwinter note</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.1">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../github_use/test.html" />
     
-    
-    <link rel="prev" href="../arduino/resource.html" />
+    <link rel="prev" href="../os/index.html" />
     
 
         <!-- head:end -->
@@ -48,7 +46,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="4" data-basepath=".." data-revision="Sat Oct 17 2015 15:38:20 GMT+0800 (CST)">
+    <div class="book" data-level="5.1" data-basepath=".." data-revision="Sat Oct 17 2015 15:38:20 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -385,7 +383,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4" data-path="github_use/index.html">
+        <li class="chapter " data-level="4" data-path="github_use/index.html">
             
                 
                     <a href="../github_use/index.html">
@@ -452,7 +450,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="os/hw1.html">
+        <li class="chapter active" data-level="5.1" data-path="os/hw1.html">
             
                 
                     <a href="../os/hw1.html">
@@ -578,7 +576,163 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="github-use">GitHub use</h1>
+                        <h1 id="hw1">hw1</h1>
+<h2 id="fork-collatz">fork + collatz</h2>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">collatz</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d ,&quot;</span>, n);
+
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) collatz(n / <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">else</span> collatz(<span class="hljs-number">3</span>*n + <span class="hljs-number">1</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">pid_t</span> pid;
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">100</span>;
+
+    pid = fork();
+
+    <span class="hljs-keyword">if</span>(pid&lt;<span class="hljs-number">0</span>) <span class="hljs-comment">/*error occurred*/</span>
+    {
+        <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Fork Failed&quot;</span>);
+        <span class="hljs-built_in">exit</span>(-<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pid==<span class="hljs-number">0</span>) <span class="hljs-comment">/*child process*/</span>
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;child pid=%d\n&quot;</span>, getpid());
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a address%p a=%d\n&quot;</span>, (<span class="hljs-keyword">void</span>*)&amp;a, a);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child[+++]\n&quot;</span>);
+        collatz(<span class="hljs-number">8</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\nChild[---]\n&quot;</span>);
+
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-comment">/*parent process*/</span>
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;parent pid=%d\n&quot;</span>, getpid());
+        a = <span class="hljs-number">300</span>;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a address%p a=%d\n&quot;</span>, (<span class="hljs-keyword">void</span>*)&amp;a, a);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent[+++]\n&quot;</span>);
+        wait(<span class="hljs-literal">NULL</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child Complete\n&quot;</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent[---]\n&quot;</span>);
+        getchar();
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2 id="pipe-fork-read-write">pipe + fork + read/write</h2>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> BUFFER_SIZE <span class="hljs-number">80</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> READ_END <span class="hljs-number">0</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> WRITE_END <span class="hljs-number">1</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span> </span>{
+
+    <span class="hljs-comment">/* argc must be 3 to ensure the correct usage */</span>
+    <span class="hljs-keyword">if</span> (argc != <span class="hljs-number">3</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The usage of this program is:\n&quot;</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;FileCopy input.txt copy.txt\n&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">int</span> pid;
+        <span class="hljs-comment">/* initialize the pipe and fork variables */</span>
+        <span class="hljs-keyword">int</span> fd[<span class="hljs-number">2</span>];<span class="hljs-comment">/* argv[0] is the program name, argv[1] and argv[2] are the file names */</span>
+        <span class="hljs-keyword">char</span> *infile = argv[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">char</span> *outfile = argv[<span class="hljs-number">2</span>];
+
+        <span class="hljs-comment">/* create a pipe */</span>
+        <span class="hljs-keyword">if</span> (pipe(fd) == -<span class="hljs-number">1</span>) {
+            <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Pipe failed&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        }
+
+        <span class="hljs-comment">/* fork */</span>
+        pid = fork();
+
+        <span class="hljs-comment">/* if pid &lt; 0 there is an error */</span>
+        <span class="hljs-keyword">if</span> (pid &lt; <span class="hljs-number">0</span>) {
+            <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Fork error&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        }
+
+        <span class="hljs-comment">/* parent code */</span>
+        <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) {
+            FILE *in;
+            <span class="hljs-keyword">char</span> buffer[BUFFER_SIZE];
+            <span class="hljs-comment">/* close the unused end of the pipe */</span>
+            close(fd[READ_END]);
+            <span class="hljs-comment">/* make a buffer to store input file information */</span>
+
+
+            <span class="hljs-comment">/* open input file */</span>
+            in = fopen(infile, <span class="hljs-string">&quot;r&quot;</span>);
+
+            <span class="hljs-comment">/* make sure it&apos;s not null */</span>
+            <span class="hljs-keyword">if</span> (in == <span class="hljs-literal">NULL</span>) {
+                <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Error opening file %s\n&quot;</span>, infile);
+                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+            }
+
+            <span class="hljs-comment">/* read from the file into the pipe thru the buffer */</span>
+            <span class="hljs-keyword">while</span> (fgets(buffer, BUFFER_SIZE, in)) {
+                write(fd[WRITE_END], buffer, <span class="hljs-built_in">strlen</span>(buffer)+<span class="hljs-number">1</span>);
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;buf1:%s\n&quot;</span>,buffer);
+                buffer[<span class="hljs-number">0</span>]=<span class="hljs-string">&apos;\0&apos;</span>;
+            }
+
+            <span class="hljs-comment">/* close the input file */</span>
+            fclose(in);
+            close(fd[WRITE_END]);
+        }
+
+        <span class="hljs-comment">/* child process has pid == 0 */</span>
+        <span class="hljs-keyword">else</span> {
+            FILE *out;
+            <span class="hljs-comment">/* create a buffer to read from the pipe and store into the out file */</span>
+            <span class="hljs-keyword">char</span> buffer[BUFFER_SIZE];
+
+            <span class="hljs-comment">/* close the unused end of the pipe */</span>
+            close(fd[WRITE_END]);
+
+            <span class="hljs-comment">/* initialize the output file */</span>
+
+            <span class="hljs-comment">/* w+ means open a file for writing and create it if it doesn&apos;t exist */</span>
+            out = fopen(outfile, <span class="hljs-string">&quot;w+&quot;</span>);
+
+            <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) {
+                <span class="hljs-keyword">if</span> (read(fd[READ_END], buffer, BUFFER_SIZE) != <span class="hljs-number">0</span>)
+                {
+                    <span class="hljs-built_in">fprintf</span>(out,<span class="hljs-string">&quot;%s&quot;</span>,buffer);
+                    fflush(out);
+                }
+                <span class="hljs-keyword">else</span>
+                    <span class="hljs-keyword">break</span>;
+            }
+
+            <span class="hljs-comment">/* close the file and the pipe */</span>
+            fclose(out);
+            close(fd[READ_END]);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
 
                     
                     </section>
@@ -589,10 +743,8 @@
         </div>
 
         
-        <a href="../arduino/resource.html" class="navigation navigation-prev " aria-label="Previous page: Resource"><i class="fa fa-angle-left"></i></a>
+        <a href="../os/index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: OS"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../github_use/test.html" class="navigation navigation-next " aria-label="Next page: Git 基本操作"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
