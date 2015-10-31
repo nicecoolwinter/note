@@ -25,4 +25,5 @@
 * [OS](os/README.md)
    * [hw1](os/hw1.md)
    * [fork](os/fork.md)
+   * [thread](os/thread.md)
 
