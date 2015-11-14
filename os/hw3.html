@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Arduino | nicecoolwinter note</title>
+        <title>hw3 | nicecoolwinter note</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.1">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../arduino/resource.html" />
     
-    
-    <link rel="prev" href="../tool/gdb.html" />
+    <link rel="prev" href="../os/thread.html" />
     
 
         <!-- head:end -->
@@ -48,7 +46,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="3" data-basepath=".." data-revision="Sat Nov 14 2015 17:47:00 GMT+0800 (CST)">
+    <div class="book" data-level="5.4" data-basepath=".." data-revision="Sat Nov 14 2015 17:47:00 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -349,7 +347,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3" data-path="arduino/index.html">
+        <li class="chapter " data-level="3" data-path="arduino/index.html">
             
                 
                     <a href="../arduino/index.html">
@@ -497,7 +495,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="os/hw3.html">
+        <li class="chapter active" data-level="5.4" data-path="os/hw3.html">
             
                 
                     <a href="../os/hw3.html">
@@ -623,7 +621,349 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="arduino">Arduino</h1>
+                        <h1 id="hw3">hw3</h1>
+<pre><code>Assume that a system has a 32-bit virtual address with a 4-KB page size. Write a 
+C program that is passed a virtual address (in decimal) on the command line and 
+have it output the page number and offset for the given address.
+</code></pre><pre><code>As an example, your program would run as follows:
+
+./a.out 19986
+
+Your program would output:
+
+The address 19986 contains:
+page number=4
+offset=3602
+</code></pre><ul>
+<li>page_number.c</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> PAGE_SIZE <span class="hljs-number">4096</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)</span> </span>{
+
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> address;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> page_number;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> offset;
+
+    <span class="hljs-keyword">if</span>(argc&lt;<span class="hljs-number">2</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter the address: &quot;</span>);
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    }
+
+    address = atoi(argv[<span class="hljs-number">1</span>]);
+    page_number = address / PAGE_SIZE;
+    offset = address % PAGE_SIZE;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The address=%u\nPage number = %u\noffset = %u\n&quot;</span>, address, page_number, offset);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-c">./page_number <span class="hljs-number">19986</span>
+</code></pre>
+<p><a href="http://web2.clarkson.edu/class/cs444/labs/lab08/paging.html" target="_blank">http://web2.clarkson.edu/class/cs444/labs/lab08/paging.html</a></p>
+<ul>
+<li>PagingReplacement.c</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-comment">/********************************************
+  CS444 Operating System
+  Lab08:
+
+  Implementing FIFO and LRU page replacement algorithm
+
+  Clarkson University 
+  Name:
+  ID:
+
+
+ Date: Spring 2011
+ *******************************************/</span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+
+<span class="hljs-comment">/**************************************
+ * The parameters of memory and disk pages 
+ *
+ * PageFrameList: The dynamically-allocated array representing memory pages
+ * FrameNR: the number of page frames in memory
+ * elementCout: Point to the next page to be replaced
+ *
+ * ReferenceString: The sequence of the demanding pages
+ * ReferenceLength: The length of the randomized reference string
+ * ReferenceSZ: the page number range in the reference string
+ *
+ */</span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> ReferenceLength <span class="hljs-number">100</span></span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span>
+{
+    <span class="hljs-keyword">int</span> *PageFrameList;
+    <span class="hljs-keyword">int</span> elementCount;    
+}PageFrame;
+
+<span class="hljs-keyword">int</span> ReferenceSZ, FrameNR;
+
+PageFrame memory;
+
+<span class="hljs-keyword">int</span> *ReferenceString;
+
+
+<span class="hljs-comment">/* Test driver sub functions */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generateReferenceString</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initializePageFrame</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printReferenceString</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printPageFrame</span><span class="hljs-params">()</span></span>;
+
+
+<span class="hljs-comment">/* Algorithm Functions */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">FIFO</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">LRU</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-comment">/* The possible algorithm subfunctions
+
+int FIFOSearch(int PageNumber);
+
+int FIFOInsert(int PageNumber);
+
+int LRUSearch(int PageNumber);
+
+int LRUInsert(int PageNumber);
+
+void LRUupdatePageTable(int Findindex);
+
+*/</span>
+
+
+
+<span class="hljs-comment">/*******************************
+ *
+ * The main function is the test driver for FIFO &amp; LRU algorithms
+ *
+ * 1. Initialize the system parameters
+ * 2. Initialize the memory pages 
+ * 3. Generate the randomized reference string
+ * 4. Apply the FIFO algorithm, calculate the number of page faults
+ * 5. Apply the LRU algorithm, calculate the number of page faults
+ */</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+
+
+
+    <span class="hljs-keyword">if</span>( argc != <span class="hljs-number">3</span> )
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Command format: Test &lt;reference string size&gt; &lt;number of page frames&gt;&quot;</span>);
+    }
+
+
+    ReferenceSZ = atoi(argv[<span class="hljs-number">1</span>]);
+    FrameNR = atoi(argv[<span class="hljs-number">2</span>]);
+
+
+   generateReferenceString();
+
+
+   initializePageFrame();
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;page fault of FIFO: %d\n&quot;</span>,FIFO());
+   <span class="hljs-built_in">free</span>(memory.PageFrameList);
+
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+
+
+   printReferenceString();
+
+   initializePageFrame();
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;page fault of LRU: %d\n&quot;</span>,LRU());
+   <span class="hljs-built_in">free</span>(memory.PageFrameList);
+
+
+   <span class="hljs-built_in">free</span>(ReferenceString);    
+
+   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+}
+
+
+<span class="hljs-comment">/**********************************
+ **********************************
+ *
+ * The test driver functions implmentation details
+ *
+ **********************************
+ */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generateReferenceString</span><span class="hljs-params">()</span>
+</span>{
+   <span class="hljs-keyword">int</span> i;
+   srand(time(<span class="hljs-number">0</span>));
+   ReferenceString = (<span class="hljs-keyword">int</span> *)<span class="hljs-built_in">malloc</span>( <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>) * ReferenceLength );
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The randomized Reference String: &quot;</span>);
+   <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt; ReferenceLength; i++)
+   {
+    ReferenceString[i] = rand() % ReferenceSZ;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, ReferenceString[i]);       
+   }
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initializePageFrame</span><span class="hljs-params">()</span>
+</span>{
+   <span class="hljs-keyword">int</span> i;
+   memory.PageFrameList = (<span class="hljs-keyword">int</span> *)<span class="hljs-built_in">malloc</span>( <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>)* FrameNR );
+   memory.elementCount =<span class="hljs-number">0</span>;    
+   <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt; FrameNR; i++)
+   {
+    memory.PageFrameList[i] = -<span class="hljs-number">1</span>;       
+   }
+
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printPageFrame</span><span class="hljs-params">()</span>
+</span>{
+   <span class="hljs-keyword">int</span> i;
+   <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt; FrameNR; i++)
+   {
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%2d &quot;</span>,memory.PageFrameList[i]);       
+   }
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printReferenceString</span><span class="hljs-params">()</span>
+</span>{
+   <span class="hljs-keyword">int</span> i;
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The Same Reference String: &quot;</span>);
+   <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt; ReferenceLength; i++)
+   {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, ReferenceString[i]);       
+   }
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+
+}
+
+
+<span class="hljs-comment">/**********************************
+ **********************************
+ *
+ * The skeleton code for FIFO &amp; LRU algs
+ * 
+ * <span class="hljs-doctag">NOTE:</span> you are not required to follow the skeleton code here 
+ *       you can also write on your own, even different data structure
+ *       BUT make sure your algorithm is correct!!!!!!
+ *       It is strongly recommended to print out the PageFrames
+ *       so that you can follow how the algorithm works and double check it.
+ *
+ **********************************
+ */</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">FIFO</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> PagefaultCount=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i;
+
+   <span class="hljs-keyword">for</span>( i=<span class="hljs-number">0</span>; i&lt;ReferenceLength; i++ ) 
+   {
+       PagefaultCount+=FIFOInsert(ReferenceString[i]);
+       printPageFrame();
+   }
+
+
+   <span class="hljs-keyword">return</span> PagefaultCount;
+}
+
+
+<span class="hljs-comment">/*  Some hints you can follow
+int FIFOSearch(int PageNumber)
+{
+
+
+
+}
+
+int FIFOInsert(int PageNumber)
+{
+    int Pagefault=0;
+    if( 0==FIFOSearch(PageNumber) )
+    {
+
+      //Replace the page HERE
+
+    }
+
+    return Pagefault;      
+}
+
+*/</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">LRU</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> PagefaultCount=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i;
+
+   <span class="hljs-keyword">for</span>( i=<span class="hljs-number">0</span>; i&lt;ReferenceLength; i++ ) 
+   {
+       PagefaultCount+=LRUInsert(ReferenceString[i]);
+       printPageFrame();
+   }
+
+
+   <span class="hljs-keyword">return</span> PagefaultCount;
+
+}
+
+<span class="hljs-comment">/*  Some hints you can follow
+int LRUSearch(int PageNumber)
+{
+
+
+}
+
+int LRUInsert(int PageNumber)
+{
+    int PageFault=0;
+
+    int Findindex = -1;
+    Findindex = LRUSearch(PageNumber);
+
+    if ( -1 == Findindex ) 
+    { 
+
+      //Replace the page HERE
+
+    }
+    else
+    {
+       LRUupdatePageTable(Findindex);
+    }
+    return PageFault;
+
+}
+
+void LRUupdatePageTable(int Findindex)
+{
+
+
+
+}
+*/</span>
+</code></pre>
 
                     
                     </section>
@@ -634,10 +974,8 @@
         </div>
 
         
-        <a href="../tool/gdb.html" class="navigation navigation-prev " aria-label="Previous page: gdb"><i class="fa fa-angle-left"></i></a>
+        <a href="../os/thread.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: hw2_thread"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../arduino/resource.html" class="navigation navigation-next " aria-label="Next page: Resource"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
