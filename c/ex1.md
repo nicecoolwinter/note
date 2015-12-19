@@ -48,7 +48,7 @@ p = &a;
 *p
 ```
 
-
+---
 
 ```c
 #include <stdio.h>
@@ -71,7 +71,8 @@ int main()
 #include <stdlib.h>
 
 void test(char (*aa)[20]) {
-    printf("aa=%ld\n", sizeof(aa));  // aa 是 char (*)[20] 指標
+     // aa 是 char (*)[20] 指標
+    printf("aa=%ld\n", sizeof(aa)); 
 }
 
 int main()
@@ -91,4 +92,8 @@ int main()
     
     return 0;
 }
+
+
+
+
 ```
