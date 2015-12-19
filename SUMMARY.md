@@ -11,7 +11,7 @@
    * [Other](c/other.md)
        * [Linux 的 time 指令](c/time.md)
    * [pointer](c/pointer.md)
-       * ex1
+       * [ex1](c/ex1.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
