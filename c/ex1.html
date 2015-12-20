@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Gitbook | nicecoolwinter note</title>
+        <title>ex1 | nicecoolwinter note</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.1">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../os/index.html" />
+    <link rel="next" href="../tool/index.html" />
     
     
-    <link rel="prev" href="../github_use/test.html" />
+    <link rel="prev" href="../c/pointer.html" />
     
 
         <!-- head:end -->
@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="4.2" data-basepath=".." data-revision="Sun Dec 20 2015 10:20:44 GMT+0800 (CST)">
+    <div class="book" data-level="1.5.1" data-basepath=".." data-revision="Sun Dec 20 2015 10:20:44 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -249,7 +249,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="c/ex1.html">
+        <li class="chapter active" data-level="1.5.1" data-path="c/ex1.html">
             
                 
                     <a href="../c/ex1.html">
@@ -437,7 +437,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2" data-path="github_use/gitbook.html">
+        <li class="chapter " data-level="4.2" data-path="github_use/gitbook.html">
             
                 
                     <a href="../github_use/gitbook.html">
@@ -644,48 +644,82 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="gitbook-%EF%BC%86-github-%E4%BD%BF%E7%94%A8">Gitbook &#xFF06; Github &#x4F7F;&#x7528;</h1>
-<h3 id="%E7%94%A2%E7%94%9F%E5%85%AC%E7%A7%81%E9%91%B0">&#x7522;&#x751F;&#x516C;&#x79C1;&#x9470;</h3>
-<pre><code>cd ~/.ssh
-ssh-keygen -t rsa -C &quot;nicecoolwinter@gmail.com&quot; -f id_rsa_nicecoolwinter
-&#x4E0D;&#x7528;&#x8F38;&#x5165;&#x4EFB;&#x4F55;&#x5BC6;&#x78BC;&#x6309; enter &#x5C31;&#x597D;
+                        <h1 id="ex1">ex1</h1>
+<ul>
+<li>&#x6307;&#x6A19;&#x4E09;&#x500B;&#x4F4D;&#x7F6E;&#x4EE3;&#x8868;&#x542B;&#x610F;&#x52D9;&#x5FC5;&#x641E;&#x61C2; , &amp;p , p , *p</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
 
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
 
-$ ls id_rsa_nicecoolwinter*
-id_rsa_nicecoolwinter
-id_rsa_nicecoolwinter.pub
-</code></pre><h3 id="-%E5%B0%87-id-rsa-nicecoolwinter-pub-%E6%94%BE%E5%88%B0-github-setting"><code>&#x5C07; id_rsa_nicecoolwinter.pub &#x653E;&#x5230; github setting</code></h3>
-<h3 id="%E8%A8%AD%E5%AE%9A-ssh-config">&#x8A2D;&#x5B9A; ~/.ssh/config</h3>
-<pre><code class="lang-sh">Host github.com-nicecoolwinter  // Host &#x540D;&#x7A31;&#x53EF;&#x4EE5;&#x81EA;&#x53D6;
-HostName github.com
-User git
-IdentityFile ~/.ssh/id_rsa_nicecoolwinter
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">int</span> *p = &amp;a;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;a);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n\n&quot;</span>, a);
+
+    <span class="hljs-comment">// &amp;p &#x662F;&#x6307;&#x6A19;&#x7684;&#x4F4D;&#x5740; , &#x6307;&#x6A19;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x4E00;&#x584A;&#x8A18;&#x61B6;&#x9AD4;&#x62FF;&#x4F86;&#x7D00;&#x9304;&#x67D0;&#x584A;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;p);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, p);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *p);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
 </code></pre>
-<h1 id="gitbook">GitBook</h1>
-<h3 id="ssh-git-hostname-github-account-repositoryname-git">ssh://git@<code>Hostname</code>/<code>github account</code>/<code>RepositoryName</code>.git</h3>
-<pre><code>git clone ssh://git@github.com-nicecoolwinter/nicecoolwinter/note.git
-</code></pre><p><code>Makfile</code></p>
-<pre><code>init:
-    @gitbook init
-
-serve:
-    @gitbook serve
-
-build:
-    @gitbook build
-
-clean:
-    rm -fr _book
-
-github:
-    @ghp-import _book -p -n
-</code></pre><h3 id="%E7%94%A2%E7%94%9F-html">&#x7522;&#x751F; html</h3>
-<pre><code>make build
-</code></pre><h3 id="%E7%99%BC%E5%B8%83-%E5%88%B0-github-pages">&#x767C;&#x5E03; &#x5230; GitHub Pages</h3>
-<pre><code>make github
-</code></pre><h3 id="%E7%B6%B2%E7%AB%99">&#x7DB2;&#x7AD9;</h3>
-<pre><code>http://nicecoolwinter.github.io/note/
+<ul>
+<li>&#x4E0B;&#x9762;&#x5DEE;&#x7570;&#x7A0B;&#x5F0F;&#x78BC; , &#x524D;&#x9762;&#x5169;&#x5340;&#x584A;&#x662F;&#x7B49;&#x50F9; , &#x90A3; *p &#x662F;&#x7B49;&#x50F9;&#x65BC; a &#x5167;&#x5BB9;</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-keyword">int</span> a = <span class="hljs-number">100</span>; 
+<span class="hljs-keyword">int</span> *p = &amp;a;
 </code></pre>
+<pre><code class="lang-c"><span class="hljs-keyword">int</span> a = <span class="hljs-number">100</span>; 
+<span class="hljs-keyword">int</span> *p;
+p = &amp;a;
+</code></pre>
+<pre><code class="lang-c">*p
+</code></pre>
+<hr>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">char</span> aa[<span class="hljs-number">4</span>][<span class="hljs-number">20</span>];  <span class="hljs-comment">// aa &#x9663;&#x5217;&#x540D;&#x7A31;&#x662F;&#x6307;&#x6A19;&#x5E38;&#x6578; , &#x7121;&#x6CD5;&#x8B8A;&#x52D5;</span>
+    <span class="hljs-keyword">char</span> (*cpa)[<span class="hljs-number">20</span>] =  aa;  <span class="hljs-comment">// cpa &#x662F;&#x6307;&#x6A19;&#x53EF;&#x4EE5;&#x8B8A;&#x52D5;</span>
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, &amp;aa[<span class="hljs-number">3</span>][<span class="hljs-number">19</span>] - &amp;aa[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void test(char (*aa)[20]) {
+     // aa &#x662F; char (*)[20] &#x6307;&#x6A19;
+    printf(&quot;aa=%ld\n&quot;, sizeof(aa)); 
+}
+
+int main()
+{
+    char *cp;
+    char (*cpa)[20];
+    char aa[4][20] = {100,127};
+
+    cp = &amp;aa[0][0];  // cp &#x578B;&#x614B;&#x662F; char*   &amp;a[0][0] &#x578B;&#x614B;&#x662F; char  ,  a[0][0] &#x578B;&#x614B;&#x662F; char 
+    cpa = aa;   // cp &amp; aa &#x578B;&#x614B;&#x90FD;&#x662F; char (*)[20]
+
+    printf(&quot;cp=%ld\n&quot;, sizeof(cp));
+    printf(&quot;cpa%ld\n&quot;, sizeof(cpa));
+    printf(&quot;aa=%ld\n&quot;, sizeof(aa));
+
+    test(aa);
+
+    return 0;
+}
+</code></pre>
+
                     
                     </section>
                 
@@ -695,10 +729,10 @@ github:
         </div>
 
         
-        <a href="../github_use/test.html" class="navigation navigation-prev " aria-label="Previous page: Git 基本操作"><i class="fa fa-angle-left"></i></a>
+        <a href="../c/pointer.html" class="navigation navigation-prev " aria-label="Previous page: pointer"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../os/index.html" class="navigation navigation-next " aria-label="Next page: OS"><i class="fa fa-angle-right"></i></a>
+        <a href="../tool/index.html" class="navigation navigation-next " aria-label="Next page: Tool"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
