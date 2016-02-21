@@ -12,7 +12,7 @@
        * [Linux 的 time 指令](c/time.md)
    * [pointer](c/pointer.md)
        * [ex1](c/ex1.md)
-       * ex2
+       * [ex2](c/ex2.md)
    * [struct](c/struct.md)
        * [strcut nested](c/strcut_nested.md)
 * [Tool](tool/README.md)
