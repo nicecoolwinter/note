@@ -8,6 +8,7 @@
        * [VLA](c/array/vla.md)
    * [Function](c/function.md)
        * [Scope & Duration](c/scope_&_duration.md)
+       * call by value & call by address
    * [Other](c/other.md)
        * [Linux 的 time 指令](c/time.md)
    * [pointer](c/pointer.md)
