@@ -12,7 +12,7 @@
        * [Linux 的 time 指令](c/time.md)
    * [pointer](c/pointer.md)
        * [ex1](c/ex1.md)
-   * struct
+   * [struct](c/struct.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
