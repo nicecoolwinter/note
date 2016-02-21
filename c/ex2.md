@@ -38,14 +38,32 @@ int main(int argc, char* argv[])
 
 ```
 
-Code
+## Memory allocation
+
+###Code
 
 ![](./images/image1.png)
+
+### Static data
 ![](./images/image2.png)
+
+### Constants
 ![](./images/image3.png)
+
+### Automatic variables 所謂的stack
 ![](./images/image4.png)
+
+### Dynamic data 所謂的heap 由 c 語言malloc or c++ new 動態配置出來的記憶體 
 ![](./images/image5.png)
+
+## Linker control
+- 會把很多object file 裡面 data bss text stack heap rodata 分類集中到ELF(linux 執行檔格式)中對應的 data bss text stack heap rodata區塊
 ![](./images/image6.png)
+
+
+## Loading
+- 把ELF load 記憶體運行這支程式
+
 ![](./images/image10.png)
 
 
