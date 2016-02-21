@@ -13,6 +13,7 @@
    * [pointer](c/pointer.md)
        * [ex1](c/ex1.md)
    * [struct](c/struct.md)
+       * strcut nested
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
