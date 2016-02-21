@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Array | nicecoolwinter note</title>
+        <title>call by value &amp; call by address | nicecoolwinter note</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.1">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../c/array/21.html" />
+    <link rel="next" href="../c/other.html" />
     
     
-    <link rel="prev" href="../c/type.html" />
+    <link rel="prev" href="../c/scope_&amp;_duration.html" />
     
 
         <!-- head:end -->
@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.2" data-basepath=".." data-revision="Mon Feb 22 2016 00:06:04 GMT+0800 (CST)">
+    <div class="book" data-level="1.3.2" data-basepath=".." data-revision="Mon Feb 22 2016 00:06:04 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -110,7 +110,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="array/index.html">
+        <li class="chapter " data-level="1.2" data-path="array/index.html">
             
                 
                     <a href="../array/index.html">
@@ -192,7 +192,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="c/call_by_value_&amp;_call_by_address.html">
+        <li class="chapter active" data-level="1.3.2" data-path="c/call_by_value_&amp;_call_by_address.html">
             
                 
                     <a href="../c/call_by_value_&amp;_call_by_address.html">
@@ -710,7 +710,64 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="array">Array</h1>
+                        <h1 id="call-by-value-call-by-address">call by value &amp; call by address</h1>
+<h2 id="call-by-value">call by value</h2>
+<ul>
+<li>&#x53EA;&#x662F;copy value main&#x51FD;&#x6578;a b &#x8B8A;&#x6578;&#x8DDF; swap&#x51FD;&#x6578; a b &#x90FD;&#x662F;&#x518D;&#x4E0D;&#x540C;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+    <span class="hljs-keyword">int</span> tmp;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;swap before a=%d, b=%d\n&quot;</span>, a, b);
+    tmp = a;
+    a = b;
+    b = tmp;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;swap after a=%d, b=%d\n&quot;</span>, a, b);
+}
+
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">100</span>, b = <span class="hljs-number">50</span>;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;main before a=%d, b=%d\n&quot;</span>, a, b);
+    swap(a, b);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;main after a=%d, b=%d\n&quot;</span>, a, b);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2 id="call-by-address">call by address</h2>
+<ul>
+<li>swap &#x51FD;&#x6578;&#x6307;&#x6A19;a &amp; b &#x6307;&#x5411; main a &amp; b &#x8B8A;&#x6578;&#x540C;&#x584A;&#x8A18;&#x61B6;&#x9AD4;</li>
+<li>&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x8907;&#x7FD2;&#x4E00;&#x4E0B; * &amp; &#x7528;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *a, <span class="hljs-keyword">int</span> *b)</span> </span>{
+    <span class="hljs-keyword">int</span> tmp;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;swap before a=%d, b=%d\n&quot;</span>, *a, *b);
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;swap after a=%d, b=%d\n&quot;</span>, *a, *b);
+}
+
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">100</span>, b = <span class="hljs-number">50</span>;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;main before a=%d, b=%d\n&quot;</span>, a, b);
+    swap(&amp;a, &amp;b);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;main after a=%d, b=%d\n&quot;</span>, a, b);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
 
                     
                     </section>
@@ -721,10 +778,10 @@
         </div>
 
         
-        <a href="../c/type.html" class="navigation navigation-prev " aria-label="Previous page: Type"><i class="fa fa-angle-left"></i></a>
+        <a href="../c/scope_&amp;_duration.html" class="navigation navigation-prev " aria-label="Previous page: Scope &amp; Duration"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../c/array/21.html" class="navigation navigation-next " aria-label="Next page: Rand 矩陣相乘"><i class="fa fa-angle-right"></i></a>
+        <a href="../c/other.html" class="navigation navigation-next " aria-label="Next page: Other"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
