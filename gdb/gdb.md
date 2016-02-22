@@ -1,9 +1,6 @@
 # GDB
 
 
-# GDB
-
-
 - foo.c
 
 ```c
