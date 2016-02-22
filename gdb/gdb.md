@@ -68,8 +68,10 @@ set env LD_LIBRARY_PATH ./lib/
 ## 問題
 
 1.想知道為什麼 solib-absolute-prefix ＆ solib-search-path 指定lib 不行？ 
-2. 
-set solib-absolute-prefix 
-set solib-search-path
-set env LD_LIBRARY_PATH 
+2.  下面四個指令有什麼差異？
+set solib-absolute-prefix  <br>
+set solib-search-path <br>
+set env LD_LIBRARY_PATH  <br>
+set debug-file-directory<br>
+
 
