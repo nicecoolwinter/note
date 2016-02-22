@@ -32,5 +32,5 @@
    * [fork](os/fork.md)
    * [hw2_thread](os/thread.md)
    * [hw3](os/hw3.md)
-* GDB
+* [GDB](gdb/gdb.md)
 
