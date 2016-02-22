@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>C 語言學習筆記 | nicecoolwinter note</title>
+        <title>GDB | nicecoolwinter note</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.1">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../c/type.html" />
     
-    
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../os/hw3.html" />
     
 
         <!-- head:end -->
@@ -48,7 +46,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1" data-basepath=".." data-revision="Tue Feb 23 2016 01:13:18 GMT+0800 (CST)">
+    <div class="book" data-level="6" data-basepath=".." data-revision="Tue Feb 23 2016 01:13:18 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -79,7 +77,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="c/index.html">
+        <li class="chapter " data-level="1" data-path="c/index.html">
             
                 
                     <a href="../c/index.html">
@@ -604,7 +602,7 @@
             
         </li>
     
-        <li class="chapter " data-level="6" data-path="gdb/gdb.html">
+        <li class="chapter active" data-level="6" data-path="gdb/gdb.html">
             
                 
                     <a href="../gdb/gdb.html">
@@ -725,16 +723,63 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="c">C</h1>
-<h2 id="reference">Reference</h2>
+                        <h1 id="gdb">GDB</h1>
+<h1 id="gdb">GDB</h1>
 <ul>
-<li>CGossip</li>
+<li>foo.c</li>
 </ul>
-<p><a href="http://openhome.cc/Gossip/CGossip/" target="_blank">http://openhome.cc/Gossip/CGossip/</a></p>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span>
+</span>{
+    <span class="hljs-keyword">int</span> s = a + b;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, s);
+    <span class="hljs-keyword">return</span> s;
+
+}
+</code></pre>
 <ul>
-<li>Linux C&#x7DE8;&#x7A0B;&#x4E00;&#x7AD9;&#x5F0F;&#x5B78;&#x7FD2;</li>
+<li>main.c</li>
 </ul>
-<p><a href="http://shihyu.github.io/books/" target="_blank">http://shihyu.github.io/books/</a></p>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> s = foo(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);
+    <span class="hljs-keyword">return</span> s;
+}
+</code></pre>
+<ul>
+<li>Makefile</li>
+</ul>
+<pre><code class="lang-c">all: so main
+so:
+    gcc -g foo.c -shared -fPIC -o libfoo.so
+main:
+    gcc -g main.c -L./ -lfoo -o test
+clean:
+    rm -f test *.so
+</code></pre>
+<h2 id="%E5%AF%A6%E9%A9%97">&#x5BE6;&#x9A57;</h2>
+<pre><code class="lang-sh">make
+mkdir src lib
+mv *.c src
+mv libfoo.so
+</code></pre>
+<p>&#x9810;&#x671F;&#x4F7F;&#x7528; directory &#x6307;&#x5B9A;&#x7A0B;&#x5F0F;&#x78BC;&#x8DEF;&#x5F91; 
+&#x4F7F;&#x7528; solib-absolute-prefix &#xFF06; solib-search-path &#x6307;&#x5B9A;lib &#x8DEF;&#x5F91;
+&#x53EF;&#x4F7F;&#x6700;&#x5F8C;&#x5931;&#x6557;&#x5FC5;&#x9808;&#x7528;set env LD_LIBRARY_PATH &#x624D;&#x53EF;&#x4EE5;</p>
+<pre><code>gdb ./test
+directory ./src
+set env LD_LIBRARY_PATH ./lib/
+</code></pre><h2 id="%E5%95%8F%E9%A1%8C">&#x554F;&#x984C;</h2>
+<p>1.&#x60F3;&#x77E5;&#x9053;&#x70BA;&#x4EC0;&#x9EBC; solib-absolute-prefix &#xFF06; solib-search-path &#x6307;&#x5B9A;lib &#x4E0D;&#x884C;&#xFF1F; </p>
+<ol>
+<li>&#x4E0B;&#x9762;&#x56DB;&#x500B;&#x6307;&#x4EE4;&#x6709;&#x4EC0;&#x9EBC;&#x5DEE;&#x7570;&#xFF1F;
+set solib-absolute-prefix  <br>
+set solib-search-path <br>
+set env LD_LIBRARY_PATH  <br>
+set debug-file-directory<br></li>
+</ol>
 
                     
                     </section>
@@ -745,10 +790,8 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../os/hw3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: hw3"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../c/type.html" class="navigation navigation-next " aria-label="Next page: Type"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
