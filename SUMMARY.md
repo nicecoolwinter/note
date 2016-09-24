@@ -16,7 +16,7 @@
        * [ex2](c/ex2.md)
    * [struct](c/struct.md)
        * [strcut nested](c/strcut_nested.md)
-   * 十個C開源項目
+   * [十個C開源項目](c/shi_ge_c_kai_yuan_xiang_mu.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
