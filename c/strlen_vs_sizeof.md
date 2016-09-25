@@ -1,0 +1,2 @@
+# strlen  vs sizeof
+
