@@ -36,6 +36,7 @@ int main(int argc, char* argv[])
 
 - strcpy
 - strcat
+- reverse
 - atof
 - atoi
 - tolower
