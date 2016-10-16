@@ -20,6 +20,7 @@
    * [面試](c/mian_shi.md)
        * [strlen  vs sizeof](c/strlen_vs_sizeof.md)
        * [指標](c/zhi_biao.md)
+   * 練習
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
