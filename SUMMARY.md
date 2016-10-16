@@ -21,6 +21,7 @@
        * [strlen  vs sizeof](c/strlen_vs_sizeof.md)
        * [指標](c/zhi_biao.md)
    * [練習](c/lian_xi.md)
+       * String
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
