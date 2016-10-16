@@ -39,4 +39,5 @@
 * [GDB](gdb/gdb.md)
 * [Python](python/python.md)
    * [酷航](python/ku_hang.md)
+   * 基本語法
 
