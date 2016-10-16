@@ -37,5 +37,5 @@
    * [hw2_thread](os/thread.md)
    * [hw3](os/hw3.md)
 * [GDB](gdb/gdb.md)
-* Python
+* [Python](python/python.md)
 
