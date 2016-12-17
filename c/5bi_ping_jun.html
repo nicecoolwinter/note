@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>hw2_thread | nicecoolwinter note</title>
+        <title>5筆平均 | nicecoolwinter note</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -41,10 +41,10 @@
         
     
     
-    <link rel="next" href="../os/hw3.html" />
+    <link rel="next" href="../c/chang_cuo_wen_ti.html" />
     
     
-    <link rel="prev" href="../os/fork.html" />
+    <link rel="prev" href="../c/string.html" />
     
 
         <!-- head:end -->
@@ -53,9 +53,9 @@
         <!-- body:start -->
         
     <div class="book"
-        data-level="5.3"
-        data-chapter-title="hw2_thread"
-        data-filepath="os/thread.md"
+        data-level="1.9.2"
+        data-chapter-title="5筆平均"
+        data-filepath="c/5bi_ping_jun.md"
         data-basepath=".."
         data-revision="Sat Dec 17 2016 23:56:25 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -439,7 +439,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="c/5bi_ping_jun.html">
+        <li class="chapter active" data-level="1.9.2" data-path="c/5bi_ping_jun.html">
             
                 
                     <a href="../c/5bi_ping_jun.html">
@@ -723,7 +723,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.3" data-path="os/thread.html">
+        <li class="chapter " data-level="5.3" data-path="os/thread.html">
             
                 
                     <a href="../os/thread.html">
@@ -857,176 +857,50 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="thread">thread</h1>
-<h2 id="hw-pic">HW pi.c</h2>
-<pre><code class="lang-c">#include &lt;pthread.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;
-
-long incircle = 0;
-long points_per_thread;
-
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-
-void *runner() {
-    long incircle_thread = 0;
-
-    unsigned int rand_state = rand();
-    long i;
-    for (i = 0; i &lt; points_per_thread; i++) {
-        /* Was initially using random(), but didn&apos;t appear to get performance
-         * improvement with threading. random() apparently uses some global state
-         * that is shared between threads, and isn&apos;t guaranteed to be threadsafe. */
-        double x = rand_r(&amp;rand_state) / ((double)RAND_MAX + 1) * 2.0 - 1.0;
-        double y = rand_r(&amp;rand_state) / ((double)RAND_MAX + 1) * 2.0 - 1.0;
-
-        if (x * x + y * y &lt; 1) {
-            incircle_thread++;
-        }
-    }
-
-    pthread_mutex_lock(&amp;mutex);
-    incircle += incircle_thread;
-    pthread_mutex_unlock(&amp;mutex);
-}
-
-/* Calculate Pi by the Monte Carlo method. Program arguments are the total number of random
- * points to use in the calculation and the number of threads to use. */
-int main(int argc, const char *argv[])
-{
-    if (argc != 3) {
-        fprintf(stderr, &quot;usage: ./pi &lt;total points&gt; &lt;threads&gt;\n&quot;);
-        exit(1);
-    }
-
-    long totalpoints = atol(argv[1]);
-    int thread_count = atoi(argv[2]);
-    points_per_thread = totalpoints / thread_count;
-
-    /* Tried using clock, but it measures CPU time, not wall clock time,
-     * so doesn&apos;t demonstrate improvement gained by threading */
-    time_t start = time(NULL);
-
-    srand((unsigned)time(NULL));
-
-    pthread_t *threads = malloc(thread_count * sizeof(pthread_t));
-
-    pthread_attr_t attr;
-    pthread_attr_init(&amp;attr);
-
-    int i;
-    for (i = 0; i &lt; thread_count; i++) {
-        pthread_create(&amp;threads[i], &amp;attr, runner, (void *) NULL);
-    }
-
-    for (i = 0; i &lt; thread_count; i++) {
-        pthread_join(threads[i], NULL);
-    }
-
-    pthread_mutex_destroy(&amp;mutex);
-    free(threads);
-
-    printf(&quot;Pi: %f\n&quot;, (4. * (double)incircle) / ((double)points_per_thread * thread_count));
-    printf(&quot;Time: %d sec\n&quot;, (unsigned int)(time(NULL) - start));
-
-    return 0;
-}
-</code></pre>
-<pre><code>gcc pi.c -o pi -lpthread
-
-./pi 10 2
-</code></pre><p><a href="http://shihyu.github.io/books/ch35s01.html" target="_blank">http://shihyu.github.io/books/ch35s01.html</a></p>
-<p>&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#x63D0;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;<code>pthread_self</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F7F;POSIX&#x7EBF;&#x7A0B;&#x5E93;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x7EBF;&#x7A0B;&#x7684;ID&#xFF0C;&#x53EF;&#x662F;&#x6211;&#x4EEC;&#x6253;&#x5370;&#x51FA;&#x6765;&#x8FD9;&#x4E2A;ID&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;ID&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x5927;&#x7684;&#x6570;&#x5B57;&#x3002;&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x6211;&#x4EEC;&#x60F3;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x5176;&#x5B9E;&#x8FD9;&#x4E2A;ID&#x662F;POSIX&#x7EBF;&#x7A0B;&#x5E93;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x800C;linux&#x5185;&#x6838;&#x4E2D;&#x4E5F;&#x4E3A;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;ID&#xFF0C;&#x8FD9;&#x4E2A;ID&#x53EF;&#x4EE5;&#x901A;&#x8FC7;gettid&#x83B7;&#x5F97;&#xFF0C;<code>gettid</code>&#x662F;linux&#x5185;&#x6838;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;Glibc&#x6CA1;&#x6709;&#x5C01;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5B9E;&#x73B0;&#x3002;</p>
-<pre><code class="lang-c">&#x6578;&#x64DA;&#x985E;&#x578B;
-<span class="hljs-keyword">pthread_t</span>&#xFF1A;&#x7DDA;&#x7A0B;&#x53E5;&#x67C4;
-<span class="hljs-keyword">pthread_attr_t</span>&#xFF1A;&#x7DDA;&#x7A0B;&#x5C6C;&#x6027;
-&#x7DDA;&#x7A0B;&#x64CD;&#x7E31;&#x51FD;&#x6578;&#xFF08;&#x7C21;&#x4ECB;&#x8D77;&#x898B;&#xFF0C;&#x7701;&#x7565;&#x53C3;&#x6578;&#xFF09;
-pthread_create()&#xFF1A;&#x5275;&#x5EFA;&#x4E00;&#x500B;&#x7DDA;&#x7A0B;
-pthread_exit()&#xFF1A;&#x7D42;&#x6B62;&#x7576;&#x524D;&#x7DDA;&#x7A0B;
-pthread_cancel()&#xFF1A;&#x4E2D;&#x65B7;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7DDA;&#x7A0B;&#x7684;&#x904B;&#x884C;
-pthread_join()&#xFF1A;&#x963B;&#x585E;&#x7576;&#x524D;&#x7684;&#x7DDA;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7DDA;&#x7A0B;&#x904B;&#x884C;&#x7D50;&#x675F;
-pthread_attr_init()&#xFF1A;&#x521D;&#x59CB;&#x5316;&#x7DDA;&#x7A0B;&#x7684;&#x5C6C;&#x6027;
-pthread_attr_setdetachstate()&#xFF1A;&#x8A2D;&#x7F6E;&#x812B;&#x96E2;&#x72C0;&#x614B;&#x7684;&#x5C6C;&#x6027;&#xFF08;&#x6C7A;&#x5B9A;&#x9019;&#x500B;&#x7DDA;&#x7A0B;&#x5728;&#x7D42;&#x6B62;&#x6642;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x88AB;&#x7D50;&#x5408;&#xFF09;
-pthread_attr_getdetachstate()&#xFF1A;&#x7372;&#x53D6;&#x812B;&#x96E2;&#x72C0;&#x614B;&#x7684;&#x5C6C;&#x6027;
-pthread_attr_destroy()&#xFF1A;&#x522A;&#x9664;&#x7DDA;&#x7A0B;&#x7684;&#x5C6C;&#x6027;
-pthread_kill()&#xFF1A;&#x5411;&#x7DDA;&#x7A0B;&#x767C;&#x9001;&#x4E00;&#x500B;&#x4FE1;&#x865F;
-
-&#x540C;&#x6B65;&#x51FD;&#x6578;
-&#x7528;&#x65BC; mutex &#x548C;&#x689D;&#x4EF6;&#x8B8A;&#x91CF;
-pthread_mutex_init() &#x521D;&#x59CB;&#x5316;&#x4E92;&#x65A5;&#x9396;
-pthread_mutex_destroy() &#x522A;&#x9664;&#x4E92;&#x65A5;&#x9396;
-pthread_mutex_lock()&#xFF1A;&#x4F54;&#x6709;&#x4E92;&#x65A5;&#x9396;&#xFF08;&#x963B;&#x585E;&#x64CD;&#x4F5C;&#xFF09;
-pthread_mutex_trylock()&#xFF1A;&#x8A66;&#x5716;&#x4F54;&#x6709;&#x4E92;&#x65A5;&#x9396;&#xFF08;&#x4E0D;&#x963B;&#x585E;&#x64CD;&#x4F5C;&#xFF09;&#x3002;&#x7576;&#x4E92;&#x65A5;&#x9396;&#x7A7A;&#x9592;&#x6642;&#x5C07;&#x4F54;&#x6709;&#x8A72;&#x9396;&#xFF1B;&#x5426;&#x5247;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;
-pthread_mutex_unlock(): &#x91CB;&#x653E;&#x4E92;&#x65A5;&#x9396;
-pthread_cond_init()&#xFF1A;&#x521D;&#x59CB;&#x5316;&#x689D;&#x4EF6;&#x8B8A;&#x91CF;
-pthread_cond_destroy()&#xFF1A;&#x92B7;&#x6BC0;&#x689D;&#x4EF6;&#x8B8A;&#x91CF;
-pthread_cond_wait(): &#x7B49;&#x5F85;&#x689D;&#x4EF6;&#x8B8A;&#x91CF;&#x7684;&#x7279;&#x6B8A;&#x689D;&#x4EF6;&#x767C;&#x751F;
-pthread_cond_signal(): &#x559A;&#x9192;&#x7B2C;&#x4E00;&#x500B;&#x8ABF;&#x7528;pthread_cond_wait()&#x800C;&#x9032;&#x5165;&#x7761;&#x7720;&#x7684;&#x7DDA;&#x7A0B;
-Thread-local storage&#xFF08;&#x6216;&#x8005;&#x4EE5;Pthreads&#x8853;&#x8A9E;&#xFF0C;&#x7A31;&#x4F5C; &#x7DDA;&#x7A0B;&#x7279;&#x6709;&#x6578;&#x64DA;&#xFF09;:
-pthread_key_create(): &#x5206;&#x914D;&#x7528;&#x65BC;&#x6A19;&#x8B58;&#x9032;&#x7A0B;&#x4E2D;&#x7DDA;&#x7A0B;&#x7279;&#x5B9A;&#x6578;&#x64DA;&#x7684;&#x9375;
-pthread_setspecific(): &#x70BA;&#x6307;&#x5B9A;&#x7DDA;&#x7A0B;&#x7279;&#x5B9A;&#x6578;&#x64DA;&#x9375;&#x8A2D;&#x7F6E;&#x7DDA;&#x7A0B;&#x7279;&#x5B9A;&#x7D81;&#x5B9A;
-pthread_getspecific(): &#x7372;&#x53D6;&#x8ABF;&#x7528;&#x7DDA;&#x7A0B;&#x7684;&#x9375;&#x7D81;&#x5B9A;&#xFF0C;&#x4E26;&#x5C07;&#x8A72;&#x7D81;&#x5B9A;&#x5B58;&#x5132;&#x5728; value &#x6307;&#x5411;&#x7684;&#x4F4D;&#x7F6E;&#x4E2D;
-pthread_key_delete(): &#x92B7;&#x6BC0;&#x73FE;&#x6709;&#x7DDA;&#x7A0B;&#x7279;&#x5B9A;&#x6578;&#x64DA;&#x9375;
-
-&#x8207;&#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#x7684;&#x5DE5;&#x5177;&#x51FD;&#x6578;
-pthread_equal(): &#x5C0D;&#x5169;&#x500B;&#x7DDA;&#x7A0B;&#x7684;&#x7DDA;&#x7A0B;&#x6A19;&#x8B58;&#x865F;&#x9032;&#x884C;&#x6BD4;&#x8F03;
-pthread_detach(): &#x5206;&#x96E2;&#x7DDA;&#x7A0B;
-pthread_self(): &#x67E5;&#x8A62;&#x7DDA;&#x7A0B;&#x81EA;&#x8EAB;&#x7DDA;&#x7A0B;&#x6A19;&#x8B58;&#x865F;
-</code></pre>
-<h2 id="pthreadcreate--pthreadjoin--&#x9084;&#x6C92;create-thread-pid-&#x6703;&#x8DDF;-tid-&#x76F8;&#x540C;">pthread_create &amp; pthread_join  &#x9084;&#x6C92;create thread PID &#x6703;&#x8DDF; TID &#x76F8;&#x540C;</h2>
-<p>getppid // &#x53D6;&#x5F97;&#x7236;&#x884C;&#x7A0B;ID
-getpid  // &#x53D6;&#x5F97;&#x76EE;&#x524D;ID
-gettid  // &#x53D6;&#x5F97;&#x76EE;&#x524D; Thread ID (TID)</p>
-<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+                        <h1 id="5&#x7B46;&#x5E73;&#x5747;">5&#x7B46;&#x5E73;&#x5747;</h1>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/syscall.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span>
 
-<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> gettid() syscall(__NR_gettid)</span>
+<span class="hljs-keyword">int</span> <span class="hljs-number">5</span>RamAvg(<span class="hljs-keyword">int</span> *sum)
+{
+    i = i % <span class="hljs-number">5</span>;
+    sum -= <span class="hljs-built_in">array</span>[i];
+    <span class="hljs-built_in">array</span>[i] = (rand() % <span class="hljs-number">5</span>) + <span class="hljs-number">10</span>;
+    sum += <span class="hljs-built_in">array</span>[i];
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;i=%d, new=%d, sum=%f\n&quot;</span>,i, <span class="hljs-built_in">array</span>[i], sum / <span class="hljs-number">5.0</span>);
+    i++;
+    getchar();
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">show_message</span><span class="hljs-params">( <span class="hljs-keyword">void</span> *ptr )</span>
-</span>{
-    <span class="hljs-keyword">char</span> *message;
-    message = (<span class="hljs-keyword">char</span> *) ptr;
-    <span class="hljs-keyword">int</span> x = <span class="hljs-number">5</span>;
-    <span class="hljs-keyword">for</span>(x = <span class="hljs-number">5</span> ; x &gt; <span class="hljs-number">0</span> ; --x) {
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;the %s thread ppid = %d,pid = %d,tid = %ld.\n&quot;</span>,message, getppid(),getpid(),gettid());
-        sleep(<span class="hljs-number">2</span>);
-    }
+    <span class="hljs-keyword">return</span> *sum / <span class="hljs-number">5.0</span>; <span class="hljs-comment">// return avg of 5 items. </span>
 }
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">pthread_t</span> thread1;
-    <span class="hljs-keyword">pthread_t</span> thread2;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> <span class="hljs-built_in">array</span>[<span class="hljs-number">5</span>] = {<span class="hljs-number">0</span>};
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
 
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;the main thread ppid = %d,pid = %d,tid = %ld.\n&quot;</span>,getppid(),getpid(),gettid());  <span class="hljs-comment">// &#x9084;&#x6C92;create thread PID &#x6703;&#x8DDF; TID &#x76F8;&#x540C;</span>
+    srand(time(<span class="hljs-literal">NULL</span>));
 
-    pthread_create(&amp;thread1, <span class="hljs-literal">NULL</span> , show_message , (<span class="hljs-keyword">void</span>*) <span class="hljs-string">&quot;Thread 1&quot;</span>);
-    pthread_create(&amp;thread2, <span class="hljs-literal">NULL</span> , show_message , (<span class="hljs-keyword">void</span>*) <span class="hljs-string">&quot;Thread 2&quot;</span>);
-    pthread_join( thread1, <span class="hljs-literal">NULL</span>);
-    pthread_join( thread2, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+        <span class="hljs-built_in">array</span>[i] = (rand() % <span class="hljs-number">5</span>) + <span class="hljs-number">10</span>;
+        sum = sum + <span class="hljs-built_in">array</span>[i];
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a[%d] = %d\n&quot;</span>, i, <span class="hljs-built_in">array</span>[i]);
+    }
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sum=%f\n&quot;</span>, sum / <span class="hljs-number">5.0</span>);
+
+    <span class="hljs-comment">// printf(&quot;%d\n&quot;,i);</span>
+
+    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) {
+        <span class="hljs-number">5</span>RamAvg();
+    }
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<pre><code>gcc thread_test.c -o thread_test -lpthread
-</code></pre><h2 id="27603-&#x662F;-shell-&#x7684;-pid">27603 &#x662F; shell &#x7684; pid</h2>
-<pre><code>the main thread ppid = 27603,pid = 31008,tid = 31008.
-the Thread 1 thread ppid = 27603,pid = 31008,tid = 31009.
-the Thread 2 thread ppid = 27603,pid = 31008,tid = 31010.
-the Thread 1 thread ppid = 27603,pid = 31008,tid = 31009.
-the Thread 2 thread ppid = 27603,pid = 31008,tid = 31010.
-the Thread 1 thread ppid = 27603,pid = 31008,tid = 31009.
-the Thread 2 thread ppid = 27603,pid = 31008,tid = 31010.
-the Thread 1 thread ppid = 27603,pid = 31008,tid = 31009.
-the Thread 2 thread ppid = 27603,pid = 31008,tid = 31010.
-the Thread 1 thread ppid = 27603,pid = 31008,tid = 31009.
-the Thread 2 thread ppid = 27603,pid = 31008,tid = 31010.
-[shihyu-MS-7758 ~]$ echo $$
-27603
-</code></pre>
+
                     
                     </section>
                 
@@ -1036,10 +910,10 @@ the Thread 2 thread ppid = 27603,pid = 31008,tid = 31010.
         </div>
 
         
-        <a href="../os/fork.html" class="navigation navigation-prev " aria-label="Previous page: fork"><i class="fa fa-angle-left"></i></a>
+        <a href="../c/string.html" class="navigation navigation-prev " aria-label="Previous page: String"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../os/hw3.html" class="navigation navigation-next " aria-label="Next page: hw3"><i class="fa fa-angle-right"></i></a>
+        <a href="../c/chang_cuo_wen_ti.html" class="navigation navigation-next " aria-label="Next page: 常錯問題"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
