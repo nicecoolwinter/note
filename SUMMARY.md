@@ -23,7 +23,7 @@
    * [練習](c/lian_xi.md)
        * [String](c/string.md)
        * [5筆平均](c/5bi_ping_jun.md)
-   * 常錯問題
+   * [常錯問題](c/chang_cuo_wen_ti.md)
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
