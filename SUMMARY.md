@@ -26,6 +26,7 @@
    * [常錯問題](c/chang_cuo_wen_ti.md)
    * [C/C++ 語言新手十三誡](c/cc++_yu_yan_xin_shou_shi_san_jie.md)
    * [Data Structure](c/data_structure.md)
+       * Linked list
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
