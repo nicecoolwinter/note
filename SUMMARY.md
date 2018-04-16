@@ -31,6 +31,7 @@
 * [Python](python/python.md)
    * [酷航](python/ku_hang.md)
    * [基本語法](python/ji_ben_yu_fa.md)
+   * 常用
 * [Tool](tool/README.md)
    * [ag](tool/ag.md)
    * [vimrc](tool/vimrc.md)
