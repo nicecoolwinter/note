@@ -29,7 +29,7 @@
        * [Linked list](c/linked_list.md)
            * [新增 刪除 附加](c/xin_zeng_shan_chu_fu_jia.md)
 * [Python](python/python.md)
-   * 常用
+   * [常用](python/chang_yong.md)
    * [酷航](python/ku_hang.md)
    * [基本語法](python/ji_ben_yu_fa.md)
 * [Tool](tool/README.md)
