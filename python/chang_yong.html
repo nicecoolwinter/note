@@ -57,7 +57,7 @@
         data-chapter-title="常用"
         data-filepath="python/chang_yong.md"
         data-basepath=".."
-        data-revision="Tue Apr 17 2018 01:10:19 GMT+0800 (CST)"
+        data-revision="Sat Apr 28 2018 20:15:07 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -929,37 +929,18 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x5E38;&#x7528;">&#x5E38;&#x7528;</h1>
+                        <h1 id="practice">practice</h1>
 <h2 id="python&#x90FD;&#x662F;&#x7269;&#x4EF6;-&#x6216;&#x8AAA;&#x662F;&#x628A;&#x4EFB;&#x4F55;&#x8CC7;&#x6599;&#x5305;&#x88DD;&#x6210;&#x7269;&#x4EF6;&#xFF0C;&#x4EE5;&#x578B;&#x5225;&#x5340;&#x5206;"><code>Python&#x90FD;&#x662F;&#x7269;&#x4EF6;</code> &#x6216;&#x8AAA;&#x662F;&#x628A;&#x4EFB;&#x4F55;&#x8CC7;&#x6599;&#x5305;&#x88DD;&#x6210;&#x7269;&#x4EF6;&#xFF0C;&#x4EE5;&#x578B;&#x5225;&#x5340;&#x5206;</h2>
 <h2 id="python-assign-&#x6C7A;&#x5B9A;class-&#x578B;&#x614B;--&#x91CD;&#x8981;&#x6982;&#x5FF5;"><code>python assign &#x6C7A;&#x5B9A;class &#x578B;&#x614B;  ***&#x91CD;&#x8981;&#x6982;&#x5FF5;***</code></h2>
 <pre><code class="lang-py">a = <span class="hljs-number">1</span>  <span class="hljs-comment"># class int &#x578B;&#x614B;</span>
 a = <span class="hljs-number">1.1</span>  <span class="hljs-comment"># class float &#x578B;&#x614B;</span>
 a = <span class="hljs-string">&apos;hello&apos;</span>  <span class="hljs-comment"># class str &#x578B;&#x614B;</span>
 </code></pre>
-<h2 id="print-a-string-as-hex-bytes">Print a string as hex bytes</h2>
-<pre><code class="lang-py">For Python <span class="hljs-number">2.</span>x:
-<span class="hljs-string">&apos;:&apos;</span>.join(x.encode(<span class="hljs-string">&apos;hex&apos;</span>) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&apos;Hello World!&apos;</span>)
-
-The code above will <span class="hljs-keyword">not</span> work <span class="hljs-keyword">with</span> Python <span class="hljs-number">3.</span>x, <span class="hljs-keyword">for</span> <span class="hljs-number">3.</span>x, the code below will work:
-<span class="hljs-string">&apos;:&apos;</span>.join(hex(ord(x))[<span class="hljs-number">2</span>:] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&apos;&#x4E2D;&#x6587;&apos;</span>)
-
-hex(ord(<span class="hljs-string">&apos;&#x4E2D;&apos;</span>))  <span class="hljs-comment"># python3 str &#x9810;&#x8A2D;&#x662F;  unicode &#x7DE8;&#x78BC;</span>
-</code></pre>
-<pre><code class="lang-py">In [<span class="hljs-number">25</span>]: text = <span class="hljs-string">&apos;&#x4E2D;&#x6587;&apos;</span>   <span class="hljs-comment"># python3 str &#x9810;&#x8A2D;&#x662F;  unicode &#x7DE8;&#x78BC;</span>
-In [<span class="hljs-number">26</span>]: b_str = text.encode(<span class="hljs-string">&apos;big5&apos;</span>) <span class="hljs-comment"># &#x8F49;&#x6210; bytes </span>
-In [<span class="hljs-number">27</span>]: b_str
-Out[<span class="hljs-number">27</span>]: <span class="hljs-string">b&apos;\xa4\xa4\xa4\xe5&apos;</span>  
-In [<span class="hljs-number">31</span>]: unicode_str = b_str.decode(<span class="hljs-string">&apos;big5&apos;</span>)  <span class="hljs-comment"># &#x5F9E; big5 &#x7684; byts decode &#x56DE; str  python3 str &#x9810;&#x8A2D;&#x662F;  unicode &#x7DE8;&#x78BC;</span>
-In [<span class="hljs-number">32</span>]: unicode_str
-Out[<span class="hljs-number">33</span>]: <span class="hljs-string">&apos;&#x4E2D;&#x6587;&apos;</span>
-In [<span class="hljs-number">34</span>]: <span class="hljs-string">&apos;:&apos;</span>.join(hex(ord(x))[<span class="hljs-number">2</span>:] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> unicode_str)  <span class="hljs-comment"># &#x67E5;&#x770B; unicode bytes &#x683C;&#x5F0F;</span>
-Out[<span class="hljs-number">34</span>]: <span class="hljs-string">&apos;4e2d:6587&apos;</span>
-</code></pre>
-<h2 id="python&#x4E94;&#x7A2E;&#x57FA;&#x672C;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#x578B;&#x614B;-list-set-dictionary-tuple-string-&#x53EA;&#x6709;list-&#x53EF;&#x8B8A;">Python&#x4E94;&#x7A2E;&#x57FA;&#x672C;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#x578B;&#x614B; list set dictionary tuple string <code>&#x53EA;&#x6709;list &#x53EF;&#x8B8A;</code></h2>
+<h2 id="python&#x4E94;&#x7A2E;&#x57FA;&#x672C;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#x578B;&#x614B;-list-set-dictionary-tuple-string-&#x53EA;&#x6709;list-dictionary&#x53EF;&#x8B8A;">Python&#x4E94;&#x7A2E;&#x57FA;&#x672C;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#x578B;&#x614B; list set dictionary tuple string <code>&#x53EA;&#x6709;list, dictionary&#x53EF;&#x8B8A;</code></h2>
 <ul>
 <li>&#x4E0D;&#x53EF;&#x8B8A;(mutable) :&#x5EFA;&#x7ACB;&#x4E4B;&#x5F8C;,&#x5176;&#x503C;&#x5C31;&#x4E0D;&#x6703;&#x6539;&#x8B8A;&#x3002;&#x5982;&#x300C; 3 + 5 &#x300D;&#x6703;&#x5EFA;&#x7ACB;&#x65B0;int&#x7269;&#x4EF6;</li>
 <li>&#x4E0D;&#x53EF;&#x8B8A;: int&#x3001;float&#x3001;str&#x3001;tuple</li>
-<li>&#x53EF;&#x8B8A;(immutable):&#x5EFA;&#x7ACB;&#x5F8C;,&#x5176;&#x5167;&#x5BB9;&#x4ECD;&#x53EF;&#x6539;&#x8B8A;   ex : &#x53EF;&#x8B8A;:list</li>
+<li>&#x53EF;&#x8B8A;(immutable):&#x5EFA;&#x7ACB;&#x5F8C;,&#x5176;&#x5167;&#x5BB9;&#x4ECD;&#x53EF;&#x6539;&#x8B8A;   ex : <code>&#x53EF;&#x8B8A;:list , dictionary</code></li>
 </ul>
 <p>Python&#x4E2D;&#x7684;&#x5143;&#x7D44;(Tuple)&#x985E;&#x4F3C;&#x65BC;Java&#x4E2D;&#x7684;&#x9663;&#x5217;,&#x4E00;&#x65E6;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x500B; tuple&#xFF0C;&#x5C31;<code>&#x4E0D;&#x80FD;&#x4EE5;&#x4EFB;&#x4F55;&#x65B9;&#x5F0F;&#x6539;&#x8B8A;&#x5B83;</code>&#x3002;</p>
 <p><code>string&#x662F;&#x4E00;&#x7A2E;&#x4E0D;&#x53EF;&#x8B8A;&#x7684;&#x6578;&#x64DA; &#x8DDF; tuple &#x4E00;&#x6A23;&#x662F;&#x4E0D;&#x53EF;&#x8B8A;&#x52D5;</code></p>
@@ -1155,6 +1136,31 @@ print(high_total)
 </code></pre>
 <h2 id="&#x7DE8;&#x78BC;--&#x91CD;&#x8981;"><code>&#x7DE8;&#x78BC; !!! &#x91CD;&#x8981;</code></h2>
 <p>&#x9019;&#x662F;&#x56E0;&#x70BA; Python 3.x &#x4E2D;&#xFF0C;python &#x76F4;&#x8B6F;&#x5668;&#x9810;&#x671F;&#x7684; .py &#x7DE8;&#x78BC;&#xFF0C;<code>&#x9810;&#x8A2D;&#x662F; UTF-8</code>&#xFF0C;&#x800C;&#x5728; Ubuntu 15.10 &#x4E2D;&#xFF0C;&#x9810;&#x8A2D;&#x63A1;&#x7528;&#x7684;&#x6587;&#x5B57;&#x7DE8;&#x78BC;&#x4E5F;&#x662F; UTF-8&#xFF0C;&#x9019;&#x6642;&#x5728; .py &#x6A94;&#x6848;&#x4E2D;&#x64B0;&#x5BEB;&#x4E2D;&#x6587;&#xFF0C;&#x4E26;&#x4E0D;&#x6703;&#x6709;&#x554F;&#x984C;&#x767C;&#x751F;&#xFF0C;&#x7136;&#x800C;&#xFF0C;&#x4F60;&#x77E5;&#x9053;&#x5728; Windows &#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x8A18;&#x4E8B;&#x672C;&#x7DE8;&#x8F2F;&#x6587;&#x5B57;&#x6A94;&#x6848;&#x6642;&#xFF0C;&#x9810;&#x8A2D;&#x7684;&#x6587;&#x5B57;&#x7DE8;&#x78BC;&#x662F;&#x4EC0;&#x9EBC;&#x55CE;&#xFF1F;</p>
+<p><img src="images/befunky-collagepython-1600x1199.png" alt=""></p>
+<h3 id="print-a-string-as-hex-bytes">Print a string as hex bytes</h3>
+<pre><code class="lang-py">For Python <span class="hljs-number">2.</span>x:
+<span class="hljs-string">&apos;:&apos;</span>.join(x.encode(<span class="hljs-string">&apos;hex&apos;</span>) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&apos;Hello World!&apos;</span>)
+
+The code above will <span class="hljs-keyword">not</span> work <span class="hljs-keyword">with</span> Python <span class="hljs-number">3.</span>x, <span class="hljs-keyword">for</span> <span class="hljs-number">3.</span>x, the code below will work:
+<span class="hljs-string">&apos;:&apos;</span>.join(hex(ord(x))[<span class="hljs-number">2</span>:] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&apos;&#x4E2D;&#x6587;&apos;</span>)
+
+hex(ord(<span class="hljs-string">&apos;&#x4E2D;&apos;</span>))  <span class="hljs-comment"># python3 str &#x9810;&#x8A2D;&#x662F;  unicode &#x7DE8;&#x78BC;</span>
+</code></pre>
+<pre><code class="lang-py">In [<span class="hljs-number">25</span>]: text = <span class="hljs-string">&apos;&#x4E2D;&#x6587;&apos;</span>   <span class="hljs-comment"># python3 str &#x9810;&#x8A2D;&#x662F;  unicode &#x7DE8;&#x78BC;</span>
+In [<span class="hljs-number">26</span>]: b_str = text.encode(<span class="hljs-string">&apos;big5&apos;</span>) <span class="hljs-comment"># &#x8F49;&#x6210; bytes </span>
+In [<span class="hljs-number">27</span>]: b_str
+Out[<span class="hljs-number">27</span>]: <span class="hljs-string">b&apos;\xa4\xa4\xa4\xe5&apos;</span>  
+In [<span class="hljs-number">31</span>]: unicode_str = b_str.decode(<span class="hljs-string">&apos;big5&apos;</span>)  <span class="hljs-comment"># &#x5F9E; big5 &#x7684; byts decode &#x56DE; str  python3 str &#x9810;&#x8A2D;&#x662F;  unicode &#x7DE8;&#x78BC;</span>
+In [<span class="hljs-number">32</span>]: unicode_str
+Out[<span class="hljs-number">33</span>]: <span class="hljs-string">&apos;&#x4E2D;&#x6587;&apos;</span>
+In [<span class="hljs-number">34</span>]: <span class="hljs-string">&apos;:&apos;</span>.join(hex(ord(x))[<span class="hljs-number">2</span>:] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> unicode_str)  <span class="hljs-comment"># &#x67E5;&#x770B; unicode bytes &#x683C;&#x5F0F;</span>
+Out[<span class="hljs-number">34</span>]: <span class="hljs-string">&apos;4e2d:6587&apos;</span>
+</code></pre>
+<h3 id="&#x8207;&#x5916;&#x754C;&#x6E9D;&#x901A;--decode&#x8207;encode">&#x8207;&#x5916;&#x754C;&#x6E9D;&#x901A; - decode&#x8207;encode</h3>
+<p><code>Python 3.x &#x4E2D;&#x7684;&#x5B57;&#x4E32;&#x90FD;&#x662F;Unicode</code></p>
+<p>&#x5728;&#x4E0A;&#x9762;&#x6211;&#x5011;&#x5B78;&#x5230;&#x4E86;&#x5982;&#x4F55;&#x8868;&#x793A; unicode &#x5B57;&#x4E32;&#xFF0C;&#x4F46;&#x662F;&#x4E8B;&#x5BE6;&#x4E0A;&#x662F;&#xFF0C; unicode &#x5B57;&#x4E32;&#x53EA;&#x80FD;&#x5B58;&#x5728;&#x7A0B;&#x5F0F;&#x7684;&#x5167;&#x90E8;&#xFF0C;&#x4E26;&#x6C92;&#x6709;&#x4E00;&#x500B;&#x7D71;&#x4E00;&#x7684;&#x8868;&#x9054;&#x65B9;&#x5F0F;&#xFF0C;&#x4E26;&#x6C92;&#x6709;&#x8FA6;&#x6CD5;&#x548C;&#x5916;&#x754C;&#x6E9D;&#x901A;&#xFF0C;&#x56E0;&#x6B64;&#x7576;&#x6211;&#x5011;&#x60F3;&#x628A;&#x5B57;&#x4E32;&#x5B58;&#x5230;&#x6A94;&#x6848;&#x88E1;&#xFF0C;&#x6216;&#x8457;&#x900F;&#x904E;&#x7DB2;&#x8DEF;&#x50B3;&#x7D66;&#x5225;&#x4EBA;&#xFF0C;&#x5F97;&#x5148;&#x5C07; unicode str &#x5B57;&#x4E32;&#x7DE8;&#x78BC;&#x6210;&#x6210; str (bytes)  &#x5B57;&#x4E32;&#xFF0C;&#x76F8;&#x5C0D;&#x5730;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x60F3;&#x958B;&#x555F;&#x67D0;&#x7A2E;&#x7DE8;&#x78BC;&#x7684;&#x6A94;&#x6848;&#x6642;&#xFF0C;&#x6211;&#x5011;&#x5F97;&#x9032;&#x884C;&#x89E3;&#x78BC;</p>
+<p>Python&#x7DE8;&#x78BC;&#x6216;&#x89E3;&#x78BC;&#x7684;&#x65B9;&#x5F0F;&#x5F88;&#x7C21;&#x55AE;&#xFF0C;&#x900F;&#x904E;encode&#x8207;decode&#x7684;&#x51FD;&#x6578;&#x547C;&#x53EB;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5728; unicode str &#x548C; str(bytes) &#x5169;&#x7A2E;&#x4E4B;&#x9593;&#x9032;&#x884C;&#x8F49;&#x63DB;</p>
+<p><img src="images/decode_encode1.png" alt=""></p>
 <h3 id="&#x95DC;&#x65BC;python&#x8173;&#x672C;&#x958B;&#x982D;&#x5169;&#x884C;&#x7684;">&#x95DC;&#x65BC;Python&#x8173;&#x672C;&#x958B;&#x982D;&#x5169;&#x884C;&#x7684;</h3>
 <p><a href="http://www.itread01.com/content/1501168823.html" target="_blank">http://www.itread01.com/content/1501168823.html</a></p>
 <p>&#x6709;&#x9806;&#x5E8F;&#x554F;&#x984C;&#x5FC5;&#x9808;&#x8981;&#x4E0B;&#x9762;&#x9019;&#x6A23;</p>
@@ -1226,6 +1232,283 @@ file_utf8.close()
 <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;Big5File.txt&quot;</span>, <span class="hljs-string">&apos;r&apos;</span>, encoding=<span class="hljs-string">&apos;big5&apos;</span>) <span class="hljs-keyword">as</span> fp:
     <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> fp:
         print(line)
+</code></pre>
+<h2 id="&#x6A21;&#x7D44;">&#x6A21;&#x7D44;</h2>
+<h3 id="python-&#x7A0B;&#x5F0F;&#x88E1;&#x7684;-name-&#x53EF;&#x4EE5;&#x7528;&#x4F86;&#x5206;&#x8FA8;&#x7A0B;&#x5F0F;&#x662F;&#x76F4;&#x63A5;&#x57F7;&#x884C;&#x9084;&#x662F;&#x88AB;-import-&#x7684;">Python &#x7A0B;&#x5F0F;&#x88E1;&#x7684; <strong>name</strong> &#x53EF;&#x4EE5;&#x7528;&#x4F86;&#x5206;&#x8FA8;&#x7A0B;&#x5F0F;&#x662F;&#x76F4;&#x63A5;&#x57F7;&#x884C;&#x9084;&#x662F;&#x88AB; import &#x7684;</h3>
+<p><code>&#x89D2;&#x8272;&#x4E0D;&#x540C;</code></p>
+<p>&#x539F;&#x4F86;&#x5982;&#x679C;&#x4E00;&#x500B; python script &#x662F;&#x88AB;&#x5225;&#x7684; python script <code>&#x7576;&#x6210; module &#x4F86; import &#x7684;&#x8A71;</code>&#xFF0C;&#x90A3;&#x9EBC;&#x9019;&#x500B;&#x88AB; import &#x7684; python script &#x7684; <strong>name</strong> &#x5C31;&#x6703;&#x662F;&#x90A3;&#x500B; python script &#x7684;&#x540D;&#x7A31;&#x3002;&#x800C;&#x5982;&#x679C;&#x9019;&#x500B; python script &#x662F;<code>&#x76F4;&#x63A5;&#x88AB;&#x57F7;&#x884C;&#x7684;&#x8A71;&#xFF0C;__name__ &#x5C31;&#x6703;&#x662F; __main__</code>&#x3002;</p>
+<h3 id="&#x95DC;&#x65BC;import&#x4E2D;&#x7684;&#x8DEF;&#x5F91;&#x641C;&#x7D22;&#x554F;&#x984C;">&#x95DC;&#x65BC;Import&#x4E2D;&#x7684;&#x8DEF;&#x5F91;&#x641C;&#x7D22;&#x554F;&#x984C;</h3>
+<pre><code class="lang-py">In [<span class="hljs-number">10</span>]: <span class="hljs-keyword">import</span>  sys
+
+In [<span class="hljs-number">11</span>]:  print(sys.path)
+[<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/bin&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python36.zip&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6/lib-dynload&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6/site-packages&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6/site-packages/IPython/extensions&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/.ipython&apos;</span>]
+</code></pre>
+<pre><code class="lang-py"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    doSomething()
+</code></pre>
+<h4 id="python----&#x63D0;&#x4F9B;&#x4E86;----3----&#x7A2E;&#x65B9;&#x5F0F;&#x4F86;&#x5F15;&#x5165;&#x5916;&#x90E8;&#x6A21;&#x584A;-----import&#x8A9E;&#x53E5;&#x3001;from----import&#x53CA;import&#x51FD;&#x6578;&#x3002;">Python    &#x63D0;&#x4F9B;&#x4E86;    3    &#x7A2E;&#x65B9;&#x5F0F;&#x4F86;&#x5F15;&#x5165;&#x5916;&#x90E8;&#x6A21;&#x584A;:     import&#x8A9E;&#x53E5;&#x3001;from...    import...&#x53CA;<strong>import</strong>&#x51FD;&#x6578;&#x3002;</h4>
+<p>&#x5176;&#x4E2D;&#x8F03;&#x70BA;&#x5E38;&#x898B;&#x7684;&#x70BA;&#x524D;&#x9762;&#x5169;&#x7A2E;,&#x800C;         <strong>import</strong>         &#x51FD;&#x6578;&#x8207;         import         &#x8A9E;&#x53E5;&#x985E;&#x4F3C;,
+&#x4E0D;&#x540C;&#x9EDE;&#x5728;&#x65BC;&#x524D;&#x8005;&#x986F;&#x5F0F;&#x5730;&#x5C07;&#x6A21;&#x584A;&#x7684;&#x540D;&#x7A31;&#x4F5C;&#x70BA;&#x5B57;&#x7B26;&#x4E32;&#x50B3;&#x905E;&#x4E26;&#x8CE6;&#x503C;&#x7D66;&#x547D;&#x540D;&#x7A7A;&#x9593;&#x7684;&#x8B8A;&#x91CF;&#x3002;
+&#x5728;&#x4F7F;&#x7528;import&#x7684;&#x6642;&#x5019;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x5E7E;&#x9EDE;:</p>
+<ul>
+<li>&#x4E00;&#x822C;&#x60C5;&#x6CC1;&#x4E0B;&#x5118;&#x91CF;&#x512A;&#x5148;&#x4F7F;&#x7528;         import    a         &#x5F62;&#x5F0F;</li>
+<li>&#x6709;&#x7BC0;&#x5236;&#x5730;&#x4F7F;&#x7528;         from    a    import    B         &#x5F62;&#x5F0F;</li>
+<li>&#x5118;&#x91CF;&#x907F;&#x514D;&#x4F7F;&#x7528;         from    a    import    *     ,<code>&#x56E0;&#x70BA;&#x9019;&#x6703;&#x6C59;&#x67D3;&#x547D;&#x540D;&#x7A7A;&#x9593;</code></li>
+</ul>
+<h4 id="from-ospath-import--from-ospath-import-join-import-os-&#x5DEE;&#x7570;">from os.path import *, from os.path import join, import os &#x5DEE;&#x7570;</h4>
+<ul>
+<li>from os.path import join , os.path&#x4E0B;&#x7684;join&#x51FD;&#x6578;&#x76F4;&#x63A5;&#x4F7F;&#x7528;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> os.path <span class="hljs-keyword">import</span> join
+<span class="hljs-comment">#join = 10 ## &#x885D;&#x5230;&#x4E00;&#x6A23;&#x540D;&#x7A31;</span>
+print(join(<span class="hljs-string">&apos;C:\\windows&apos;</span>, <span class="hljs-string">&apos;system32&apos;</span>))
+</code></pre>
+<ul>
+<li>from os.path import * , os.path &#x5E95;&#x4E0B;&#x6240;&#x6709;&#x51FD;&#x6578;&#x76F4;&#x63A5;&#x4F7F;&#x7528;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> os.path <span class="hljs-keyword">import</span> &#xFF0A;
+<span class="hljs-comment">#join = 10 ## &#x885D;&#x5230;&#x4E00;&#x6A23;&#x540D;&#x7A31;</span>
+print(join(<span class="hljs-string">&apos;C:\\windows&apos;</span>, <span class="hljs-string">&apos;system32&apos;</span>))
+</code></pre>
+<ul>
+<li>import os , &#x5EFA;&#x8B70;&#x90FD;&#x4F7F;&#x7528;&#x9019;&#x500B;&#x907F;&#x514D;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x885D;&#x7A81;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">import</span> os
+join = <span class="hljs-number">10</span>
+print(join)
+print(os.path.join(<span class="hljs-string">&apos;C:\\windows&apos;</span>, <span class="hljs-string">&apos;system32&apos;</span>))
+</code></pre>
+<p>Python &#x63D0;&#x4F9B;&#x7684; module&#xFF08;&#x6A21;&#x7D44;&#xFF09;&#x8207; package&#xFF08;&#x5957;&#x4EF6;&#xFF09;&#x662F;&#x5EFA;&#x7ACB;&#x67B6;&#x69CB;&#x7684;&#x57FA;&#x672C;&#x5143;&#x4EF6;&#xFF0C;&#x4F46;&#x5728;module&#x4E4B;&#x9593;&#x70BA;&#x4E86;&#x91CD;&#x8907;&#x4F7F;&#x7528;&#x4E00;&#x4E9B; function&#xFF08;&#x51FD;&#x6578;&#xFF09;&#x6216; class&#xFF08;&#x985E;&#x5225;&#xFF09;&#x800C;&#x5FC5;&#x9808;&#x4E92;&#x76F8; import&#xFF08;&#x532F;&#x5165;&#xFF09;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x4E00;&#x500B;&#x4E0D;&#x6CE8;&#x610F;&#x5C31;&#x6703;&#x6389;&#x5165;&#x6DF7;&#x4E82;&#x7684; import &#x9677;&#x9631;&#x3002;</p>
+<pre><code class="lang-sh">sample_package/
+&#x251C;&#x2500;&#x2500; __init__.py
+&#x251C;&#x2500;&#x2500; sample_module.py
+&#x2514;&#x2500;&#x2500; sample_module_import.py
+</code></pre>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> sample_module <span class="hljs-keyword">import</span> sample_func
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    sample_func()
+</code></pre>
+<p>&#x5728; Python &#x4E2D;&#xFF0C;import&#x3001;import as &#x8207; from import &#x662F;&#x9673;&#x8FF0;&#x53E5;&#xFF0C;&#x53EF;&#x4EE5;&#x51FA;&#x73FE;&#x5728;&#x7A0B;&#x5F0F;&#x4E2D;&#x9673;&#x8FF0;&#x53E5;&#x53EF;&#x51FA;&#x73FE;&#x7684;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#xFF0C;&#x5B83;&#x5011;&#x57FA;&#x672C;&#x4E0A;&#x7528;&#x4F86;&#x5728;&#x73FE;&#x6709;&#x7BC4;&#x7587;&#xFF08;Scope&#xFF09;&#x4E2D;&#x532F;&#x5165;&#x3001;&#x8A2D;&#x5B9A;&#x540D;&#x7A31;&#x7A7A;&#x9593;&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x5982;&#x679C;&#x5148;&#x524D;&#x7A0B;&#x5F0F;&#x7BC4;&#x4F8B;&#x662F;&#x64B0;&#x5BEB;&#x65BC; xmath.py &#x6A94;&#x6848;&#x4E2D;&#xFF0C;&#x90A3;&#x9EBC;&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B; import&#x3001;import as &#x8207; from import &#x7684;&#x4F7F;&#x7528;&#x5BE6;&#x4F8B;&#xFF0C;&#x5047;&#x8A2D;&#x9019;&#x4E9B;&#x7A0B;&#x5F0F;&#x662F;&#x64B0;&#x5BEB;&#x5728;&#x8207; xmath.py &#x76F8;&#x540C;&#x76EE;&#x9304;&#x7684;&#x53E6;&#x4E00;&#x500B; .py &#x6A94;&#x6848;&#xFF1A;</p>
+<ul>
+<li>xmath.py</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">max</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">if</span> a &gt; b <span class="hljs-keyword">else</span> b
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">min</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">if</span> a &lt; b <span class="hljs-keyword">else</span> b
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span><span class="hljs-params">(*numbers)</span>:</span> <span class="hljs-comment"># numbers &#x63A5;&#x53D7;&#x53EF;&#x8B8A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</span>
+    total = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> numbers:
+        total += number
+    <span class="hljs-keyword">return</span> total
+
+pi = <span class="hljs-number">3.141592653589793</span>
+e = <span class="hljs-number">2.718281828459045</span>
+</code></pre>
+<pre><code class="lang-py"><span class="hljs-keyword">import</span> xmath
+<span class="hljs-keyword">print</span> <span class="hljs-string">&apos;# import xmath&apos;</span>
+<span class="hljs-keyword">print</span> xmath.pi
+<span class="hljs-keyword">print</span> xmath.max(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>)
+<span class="hljs-keyword">print</span> xmath.sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
+
+<span class="hljs-keyword">print</span> <span class="hljs-string">&apos;# import xmath as math&apos;</span>
+<span class="hljs-keyword">import</span> xmath <span class="hljs-keyword">as</span> math <span class="hljs-comment"># &#x70BA; xmath &#x6A21;&#x7D44;&#x53D6;&#x5225;&#x540D;&#x70BA; math</span>
+<span class="hljs-keyword">print</span> math.e
+
+<span class="hljs-keyword">print</span> <span class="hljs-string">&apos;# from xmath import min&apos;</span>
+<span class="hljs-keyword">from</span> xmath <span class="hljs-keyword">import</span> min  <span class="hljs-comment"># &#x5C07; min &#x8907;&#x88FD;&#x81F3;&#x76EE;&#x524D;&#x6A21;&#x7D44;&#xFF0C;&#x4E0D;&#x5EFA;&#x8B70; from modu import *&#xFF0C;&#x6613;&#x9020;&#x6210;&#x540D;&#x7A31;&#x885D;&#x7A81;</span>
+<span class="hljs-keyword">print</span> min(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>)
+</code></pre>
+<h2 id="&#x51FD;&#x6578;">&#x51FD;&#x6578;</h2>
+<h4 id="&#x4E0D;&#x5B9A;&#x9577;&#x5EA6;&#x5F15;&#x6578;">&#x4E0D;&#x5B9A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</h4>
+<p>&#x4E8B;&#x5148;&#x53EF;&#x80FD;&#x4E0D;&#x77E5;&#x9053;&#x8981;&#x50B3;&#x5165;&#x7684;&#x5F15;&#x6578;&#x500B;&#x6578;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5B9A;&#x7FA9;&#x51FD;&#x5F0F;&#x7684;&#x53C3;&#x6578;&#x6642;&#x4F7F;&#x7528;<code>*</code>&#xFF0C;&#x8868;&#x793A;&#x8A72;&#x53C3;&#x6578;&#x63A5;&#x53D7;&#x4E0D;&#x5B9A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</p>
+<pre><code class="lang-py">pi = <span class="hljs-number">3.141592653589793</span>
+e = <span class="hljs-number">2.718281828459045</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">max</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">if</span> a &gt; b <span class="hljs-keyword">else</span> b
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">min</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-keyword">if</span> a &lt; b:
+        <span class="hljs-keyword">return</span> a
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> b
+    <span class="hljs-comment">#return a if a &lt; b else b</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span><span class="hljs-params">(*numbers)</span>:</span> <span class="hljs-comment"># numbers &#x63A5;&#x53D7;&#x53EF;&#x8B8A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</span>
+    print(type(numbers))
+    total = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> numbers:
+        total += number
+    <span class="hljs-keyword">return</span> total
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    print(max(<span class="hljs-number">5</span>,<span class="hljs-number">100</span>))
+    print(min(<span class="hljs-number">5</span>,<span class="hljs-number">100</span>))
+    print(sum(<span class="hljs-number">5</span>,<span class="hljs-number">100</span>,<span class="hljs-number">300</span>,<span class="hljs-number">55</span>))
+</code></pre>
+<h4 id="&#x4F9D;&#x53C3;&#x6578;&#x500B;&#x6578;&#x4E0D;&#x540C;&#x4F86;&#x5340;&#x5225;&#x7684;&#x51FD;&#x5F0F;&#x91CD;&#x8F09;&#x6982;&#x5FF5;&#xFF0C;&#x5728;python&#x4E2D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9810;&#x8A2D;&#x5F15;&#x6578;&#xFF08;argument&#xFF09;&#x4F86;&#x89E3;&#x6C7A;">&#x4F9D;&#x53C3;&#x6578;&#x500B;&#x6578;&#x4E0D;&#x540C;&#x4F86;&#x5340;&#x5225;&#x7684;&#x51FD;&#x5F0F;&#x91CD;&#x8F09;&#x6982;&#x5FF5;&#xFF0C;&#x5728;Python&#x4E2D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9810;&#x8A2D;&#x5F15;&#x6578;&#xFF08;Argument&#xFF09;&#x4F86;&#x89E3;&#x6C7A;</h4>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span><span class="hljs-params">(a, b, c = <span class="hljs-number">0</span>)</span>:</span>
+    <span class="hljs-keyword">return</span> a + b + c
+
+print(sum(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>))   <span class="hljs-comment"># &#x986F;&#x793A; 60</span>
+print(sum(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>))       <span class="hljs-comment"># &#x986F;&#x793A; 30</span>
+</code></pre>
+<h4 id="python-&#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;-&#x4E0D;&#x7528;return&#x76F4;&#x63A5;&#x4FEE;&#x6539;list--&#x4F46;&#x53EA;&#x6709;list&#x578B;&#x5225;&#x53EF;&#x6539;&#x52D5;&#x5176;&#x4ED6;&#x7684;&#x578B;&#x5225;&#x90FD;&#x7121;&#x6CD5;&#x6539;&#x52D5;">python &#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;, &#x4E0D;&#x7528;return&#x76F4;&#x63A5;&#x4FEE;&#x6539;list , &#x4F46;&#x53EA;&#x6709;list&#x578B;&#x5225;&#x53EF;&#x6539;&#x52D5;,&#x5176;&#x4ED6;&#x7684;&#x578B;&#x5225;&#x90FD;&#x7121;&#x6CD5;&#x6539;&#x52D5;</h4>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_element</span><span class="hljs-params">(l)</span>:</span>
+    l.pop()
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">append_element</span><span class="hljs-params">(l, data)</span>:</span>
+    l.append(data)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    a = [<span class="hljs-number">14</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>]
+    print(a)
+    remove_element(a)
+    remove_element(a)
+    print(a)
+    append_element(a, <span class="hljs-string">&apos;Hello world!!!!&apos;</span>) <span class="hljs-comment"># l = a, data = &apos;&apos;</span>
+    print(a)
+</code></pre>
+<h3 id="python-&#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;">python &#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;</h3>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_address</span><span class="hljs-params">(obj_addr)</span>:</span>
+    print(id(obj_addr))
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    a = [<span class="hljs-number">14</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>] <span class="hljs-comment"># list</span>
+    t = (<span class="hljs-number">13</span>,<span class="hljs-string">&apos;fff&apos;</span>) <span class="hljs-comment"># tuple</span>
+    s = set([<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>])  <span class="hljs-comment"># set</span>
+    d = {<span class="hljs-string">&apos;A&apos;</span>: <span class="hljs-number">22</span>, <span class="hljs-string">&apos;B&apos;</span>: <span class="hljs-string">&apos;hello&apos;</span>}
+    string = <span class="hljs-string">&apos;H:eqello&apos;</span>
+    i = <span class="hljs-number">10</span>
+    f = <span class="hljs-number">10.33</span>
+
+    print(id(a))
+    print(id(t))
+    print(id(s))
+    print(id(d))
+    print(id(string))
+    print(id(i))
+    print(id(f))
+
+    show_address(a)
+    show_address(t)
+    show_address(s)
+    show_address(d)
+    show_address(string)
+    show_address(i)
+    show_address(f)
+</code></pre>
+<h2 id="&#x8B8A;&#x6578;&#x7BC4;&#x570D;">&#x8B8A;&#x6578;&#x7BC4;&#x570D;</h2>
+<p><a href="https://openhome.cc/Gossip/Python/VariableScope.html" target="_blank">https://openhome.cc/Gossip/Python/VariableScope.html</a></p>
+<p>&#x8B8A;&#x6578;&#x6709;&#x53EF;&#x8996;&#x7BC4;&#x570D; &#xFF06; &#x751F;&#x547D;&#x9031;&#x671F;</p>
+<h3 id="&#x5340;&#x57DF;&#x8B8A;&#x6578;local-variable&#x7684;&#x7279;&#x6027;">&#x5340;&#x57DF;&#x8B8A;&#x6578;(local variable)&#x7684;&#x7279;&#x6027;</h3>
+<ol>
+<li>&#x51FD;&#x6578;&#x5167;&#x7684;&#x8B8A;&#x6578;<code>&#x542B;&#x8F38;&#x5165;&#x53C3;&#x6578;</code>&#x9810;&#x8A2D;&#x70BA;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x3002;</li>
+<li>&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x751F;&#x547D;&#x9031;&#x671F;&#x53EA;&#x5B58;&#x5728;&#x51FD;&#x6578;&#x57F7;&#x884C;&#x671F;&#x9593;&#xFF0C;&#x7576;&#x8A72;&#x51FD;&#x6578;&#x57F7;&#x884C;&#x5B8C;&#x7562;&#xFF0C;&#x51FD;&#x6578;&#x5167;&#x7684;&#x5340;
+&#x57DF;&#x8B8A;&#x6578;&#x5373;&#x6703;&#x5F9E;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x6D88;&#x5931;&#x3002;</li>
+<li>&#x51FD;&#x6578;&#x5916;&#x5176;&#x4ED6;&#x7A0B;&#x5F0F;&#x4E0D;&#x80FD;&#x8B80;&#x53D6;&#x51FD;&#x6578;&#x5167;&#x7684;&#x4EFB;&#x4F55;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#xFF0C;&#x9664;&#x975E;&#x51FD;&#x6578;&#x5167;&#x7684;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x8A2D;
+&#x5B9A;&#x70BA;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x3002;</li>
+</ol>
+<h3 id="&#x5168;&#x57DF;&#x8B8A;&#x6578;global-variable-&#x7684;&#x7279;&#x6027;">&#x5168;&#x57DF;&#x8B8A;&#x6578;(global variable) &#x7684;&#x7279;&#x6027;</h3>
+<ol>
+<li>&#x51FD;&#x6578;&#x5916;&#x7684;&#x8B8A;&#x6578;&#x5747;&#x70BA;&#x5168;&#x57DF;&#x8B8A;&#x6578;</li>
+<li>&#x6240;&#x6709;&#x7684;&#x51FD;&#x6578;&#x90FD;&#x6709;&#x6B0A;&#x8B80;&#x53D6;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#xFF0C;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8B80;&#x53D6;&#x6B0A;&#x50C5;&#x9650;&#x65BC;&#x6240;&#x5C6C;&#x51FD;&#x6578;&#x3002;</li>
+<li>&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x751F;&#x547D;&#x9031;&#x671F;&#x5F9E;&#x8A72;&#x8B8A;&#x6578;&#x7522;&#x751F;&#x958B;&#x59CB;&#x5373;&#x6703;&#x5B58;&#x5728;&#x65BC;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#xFF0C;&#x76F4;&#x5230;&#x96E2;&#x958B;
+python &#x4E3B;&#x7A0B;&#x5F0F;&#xFF0C;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x624D;&#x6703;&#x5F9E;&#x8A18;&#x61B6;&#x4E2D;&#x6D88;&#x5931;&#x3002;</li>
+</ol>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_show_global</span><span class="hljs-params">()</span>:</span>
+    print(id(b))
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    <span class="hljs-keyword">global</span> b
+    b = <span class="hljs-number">10</span>
+
+    print(id(b))
+    test_show_global()
+</code></pre>
+<h3 id=""> </h3>
+<pre><code class="lang-py">x = <span class="hljs-number">10</span>       &#x3000;&#x3000;<span class="hljs-comment"># &#x5168;&#x57DF;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer</span><span class="hljs-params">()</span>:</span>
+   y = <span class="hljs-number">20</span>        <span class="hljs-comment"># &#x5728; outer() &#x51FD;&#x5F0F;&#x7BC4;&#x570D;</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner</span><span class="hljs-params">()</span>:</span>
+       z = <span class="hljs-number">30</span>    <span class="hljs-comment"># &#x5728; inner() &#x51FD;&#x5F0F;&#x7BC4;&#x570D;</span>
+       print(x)  <span class="hljs-comment"># &#x5167;&#x5EFA;&#x7BC4;&#x570D; print&#xFF0C;&#x5168;&#x57DF;&#x7684; x</span>
+   &#x3000;&#x3000;print(y)  <span class="hljs-comment"># &#x5167;&#x5EFA;&#x7BC4;&#x570D; print&#xFF0C;&#x5916;&#x5305; outer() &#x51FD;&#x5F0F;&#x7684; y</span>
+
+   print(x)       <span class="hljs-comment"># &#x5167;&#x5EFA;&#x7BC4;&#x570D; print&#xFF0C;&#x5168;&#x57DF;&#x7684; x</span>
+</code></pre>
+<h4 id="&#x5728;python-3&#x4E2D;&#x65B0;&#x589E;&#x4E86;nonlocal&#xFF0C;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x6307;&#x660E;&#x8B8A;&#x6578;&#x4E26;&#x975E;&#x5340;&#x57DF;&#x8B8A;&#x6578;">&#x5728;Python 3&#x4E2D;&#x65B0;&#x589E;&#x4E86;<code>nonlocal</code>&#xFF0C;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x6307;&#x660E;&#x8B8A;&#x6578;&#x4E26;&#x975E;&#x5340;&#x57DF;&#x8B8A;&#x6578;</h4>
+<pre><code class="lang-py">x = <span class="hljs-number">10</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer</span><span class="hljs-params">()</span>:</span>
+   x = <span class="hljs-number">100</span>         <span class="hljs-comment"># &#x9019;&#x662F;&#x5728; outer() &#x51FD;&#x5F0F;&#x7BC4;&#x570D;&#x7684; x</span>
+   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner</span><span class="hljs-params">()</span>:</span>
+       <span class="hljs-keyword">nonlocal</span> x
+       x = <span class="hljs-number">1000</span>    <span class="hljs-comment"># &#x6539;&#x8B8A;&#x7684;&#x662F; outer() &#x51FD;&#x5F0F;&#x7684; x</span>
+   inner()
+   print(x)        <span class="hljs-comment"># &#x986F;&#x793A; 1000</span>
+
+outer()
+print(x)           <span class="hljs-comment"># &#x986F;&#x793A; 10</span>
+</code></pre>
+<h4 id="&#x8A18;&#x5F97;&#x8B8A;&#x6578;&#x7BC4;&#x570D;&#x7684;&#x5EFA;&#x7ACB;&#x662F;&#x5728;&#x6307;&#x5B9A;&#x6642;&#x767C;&#x751F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x53D6;&#x7528;&#x6642;&#x767C;&#x751F;&#xFF0C;&#x6240;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x9019;&#x500B;&#x4F8B;&#x5B50;">&#x8A18;&#x5F97;<code>&#x8B8A;&#x6578;&#x7BC4;&#x570D;</code>&#x7684;&#x5EFA;&#x7ACB;&#x662F;&#x5728;<code>&#x6307;&#x5B9A;</code>&#x6642;&#x767C;&#x751F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x53D6;&#x7528;&#x6642;&#x767C;&#x751F;&#xFF0C;&#x6240;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x9019;&#x500B;&#x4F8B;&#x5B50;</h4>
+<pre><code class="lang-py">x = <span class="hljs-number">20</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">some</span><span class="hljs-params">(x = x)</span>:</span>
+    print(id(x))
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    some(<span class="hljs-number">30</span>)
+    print(id(x))
+</code></pre>
+<h2 id="debug-tips">debug Tips</h2>
+<ul>
+<li>pycallgraph</li>
+</ul>
+<pre><code class="lang-py">pip install pycallgraph graphviz
+pycallgraph graphviz -- ./test1.py
+pycallgraph.png &#x7522;&#x751F;&#x4E00;&#x5F35;function call graph
+</code></pre>
+<ul>
+<li>pudb  # python -m pudb  xxxx.py</li>
+<li>inspect &#x6A21;&#x7D44;&#x5728; Python &#x5FEB;&#x901F;&#x9664;&#x932F;</li>
+<li>pprint</li>
+<li>pythontutor
+<a href="http://www.pythontutor.com/visualize.html#mode=display" target="_blank">http://www.pythontutor.com/visualize.html#mode=display</a>  // &#x7DDA;&#x4E0A;&#x7248;</li>
+</ul>
+<ul>
+<li>pudb &#x7A0B;&#x5F0F;&#x78BC;&#x52A0;&#x5165;&#x4E2D;&#x65B7;&#x9EDE;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">import</span> pudb
+pudb.set_trace()
+</code></pre>
+<ul>
+<li>TOOL OnlinePythonTutor</li>
+</ul>
+<pre><code class="lang-`sh">git clone https://github.com/pgbovine/OnlinePythonTutor
+
+pip install bottle # make sure the bottle webserver (http://bottlepy.org/) is installed
+cd OnlinePythonTutor/v5-unity/
+python bottle_server.py
+http://localhost:8003/live.html#mode=edit   // &#x958B;&#x555F;
+</code></pre>
+<h2 id="&#x597D;&#x7528;&#x7684;&#x51FD;&#x6578;">&#x597D;&#x7528;&#x7684;&#x51FD;&#x6578;</h2>
+<p><code>type() &#x770B;&#x7269;&#x4EF6;&#x578B;&#x614B;</code><br> 
+<code>id() &#x770B;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;</code><br></p>
+<pre><code class="lang-py">If you mean the directory of the script being run:
+<span class="hljs-keyword">import</span> os
+os.path.dirname(os.path.abspath(__file__))
+
+If you mean the current working directory:
+<span class="hljs-keyword">import</span> os
+os.getcwd()
+</code></pre>
+<h2 id="&#x5E38;&#x898B;&#x932F;&#x8AA4;&#x8A0A;&#x606F;">&#x5E38;&#x898B;&#x932F;&#x8AA4;&#x8A0A;&#x606F;</h2>
+<pre><code class="lang-sh">TabError: inconsistent use of tabs and spaces <span class="hljs-keyword">in</span> indentation  // &#x683C;&#x5F0F;&#x6C92;&#x5C0D;&#x597D;
 </code></pre>
 <h2 id="&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x4E09;&#x5927;&#x7279;&#x8272;">&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x4E09;&#x5927;&#x7279;&#x8272;</h2>
 <p><a href="https://kaochenlong.com/2011/10/13/python-oop/" target="_blank">https://kaochenlong.com/2011/10/13/python-oop/</a></p>
@@ -1510,283 +1793,6 @@ b.hello()
 <h3 id="&#x5728;&#x5982;&#x4F55;&#x78BA;&#x5B9A;&#x4E00;&#x500B;&#x7269;&#x9AD4;&#x7684;&#x5927;&#x5C0F;&#xFF1F;">&#x5728;&#x5982;&#x4F55;&#x78BA;&#x5B9A;&#x4E00;&#x500B;&#x7269;&#x9AD4;&#x7684;&#x5927;&#x5C0F;&#xFF1F;</h3>
 <p>&#x7B54;&#x6848;&#xFF0C;&quot;&#x53EA;&#x4F7F;&#x7528; sys.getsizeof&quot;&#x4E0D;&#x662F;&#x5B8C;&#x5168;&#x5B8C;&#x6574;&#x7684;&#x7B54;&#x6848;&#x3002;
 &#x9019;&#x5C0D;&#x65BC;&#x76F4;&#x63A5;&#x7684;&#x5167;&#x7F6E;&#x5C0D;&#x8C61;&#x662F;&#x6709;&#x6548;&#x7684;&#xFF0C;&#x4F46;&#x5B83;&#x4E26;&#x4E0D;&#x89E3;&#x91CB;&#x5B83;&#x5011;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x4EC0;&#x9EBC;&#xFF0C;&#x7279;&#x5225;&#x662F;&#x6578;&#x5B57;&#x548C;&#x5B57;&#x5143;&#x4E32;&#x4E4B;&#x5916;&#x7684;&#x985E;&#x578B;&#x3002;</p>
-<h2 id="&#x6A21;&#x7D44;">&#x6A21;&#x7D44;</h2>
-<h3 id="python-&#x7A0B;&#x5F0F;&#x88E1;&#x7684;-name-&#x53EF;&#x4EE5;&#x7528;&#x4F86;&#x5206;&#x8FA8;&#x7A0B;&#x5F0F;&#x662F;&#x76F4;&#x63A5;&#x57F7;&#x884C;&#x9084;&#x662F;&#x88AB;-import-&#x7684;">Python &#x7A0B;&#x5F0F;&#x88E1;&#x7684; <strong>name</strong> &#x53EF;&#x4EE5;&#x7528;&#x4F86;&#x5206;&#x8FA8;&#x7A0B;&#x5F0F;&#x662F;&#x76F4;&#x63A5;&#x57F7;&#x884C;&#x9084;&#x662F;&#x88AB; import &#x7684;</h3>
-<p><code>&#x89D2;&#x8272;&#x4E0D;&#x540C;</code></p>
-<p>&#x539F;&#x4F86;&#x5982;&#x679C;&#x4E00;&#x500B; python script &#x662F;&#x88AB;&#x5225;&#x7684; python script <code>&#x7576;&#x6210; module &#x4F86; import &#x7684;&#x8A71;</code>&#xFF0C;&#x90A3;&#x9EBC;&#x9019;&#x500B;&#x88AB; import &#x7684; python script &#x7684; <strong>name</strong> &#x5C31;&#x6703;&#x662F;&#x90A3;&#x500B; python script &#x7684;&#x540D;&#x7A31;&#x3002;&#x800C;&#x5982;&#x679C;&#x9019;&#x500B; python script &#x662F;<code>&#x76F4;&#x63A5;&#x88AB;&#x57F7;&#x884C;&#x7684;&#x8A71;&#xFF0C;__name__ &#x5C31;&#x6703;&#x662F; __main__</code>&#x3002;</p>
-<h3 id="&#x95DC;&#x65BC;import&#x4E2D;&#x7684;&#x8DEF;&#x5F91;&#x641C;&#x7D22;&#x554F;&#x984C;">&#x95DC;&#x65BC;Import&#x4E2D;&#x7684;&#x8DEF;&#x5F91;&#x641C;&#x7D22;&#x554F;&#x984C;</h3>
-<pre><code class="lang-py">In [<span class="hljs-number">10</span>]: <span class="hljs-keyword">import</span>  sys
-
-In [<span class="hljs-number">11</span>]:  print(sys.path)
-[<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/bin&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python36.zip&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6/lib-dynload&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6/site-packages&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/anaconda3/lib/python3.6/site-packages/IPython/extensions&apos;</span>, <span class="hljs-string">&apos;/home/shihyu/.ipython&apos;</span>]
-</code></pre>
-<pre><code class="lang-py"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    doSomething()
-</code></pre>
-<h4 id="python----&#x63D0;&#x4F9B;&#x4E86;----3----&#x7A2E;&#x65B9;&#x5F0F;&#x4F86;&#x5F15;&#x5165;&#x5916;&#x90E8;&#x6A21;&#x584A;-----import&#x8A9E;&#x53E5;&#x3001;from----import&#x53CA;import&#x51FD;&#x6578;&#x3002;">Python    &#x63D0;&#x4F9B;&#x4E86;    3    &#x7A2E;&#x65B9;&#x5F0F;&#x4F86;&#x5F15;&#x5165;&#x5916;&#x90E8;&#x6A21;&#x584A;:     import&#x8A9E;&#x53E5;&#x3001;from...    import...&#x53CA;<strong>import</strong>&#x51FD;&#x6578;&#x3002;</h4>
-<p>&#x5176;&#x4E2D;&#x8F03;&#x70BA;&#x5E38;&#x898B;&#x7684;&#x70BA;&#x524D;&#x9762;&#x5169;&#x7A2E;,&#x800C;         <strong>import</strong>         &#x51FD;&#x6578;&#x8207;         import         &#x8A9E;&#x53E5;&#x985E;&#x4F3C;,
-&#x4E0D;&#x540C;&#x9EDE;&#x5728;&#x65BC;&#x524D;&#x8005;&#x986F;&#x5F0F;&#x5730;&#x5C07;&#x6A21;&#x584A;&#x7684;&#x540D;&#x7A31;&#x4F5C;&#x70BA;&#x5B57;&#x7B26;&#x4E32;&#x50B3;&#x905E;&#x4E26;&#x8CE6;&#x503C;&#x7D66;&#x547D;&#x540D;&#x7A7A;&#x9593;&#x7684;&#x8B8A;&#x91CF;&#x3002;
-&#x5728;&#x4F7F;&#x7528;import&#x7684;&#x6642;&#x5019;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x5E7E;&#x9EDE;:</p>
-<ul>
-<li>&#x4E00;&#x822C;&#x60C5;&#x6CC1;&#x4E0B;&#x5118;&#x91CF;&#x512A;&#x5148;&#x4F7F;&#x7528;         import    a         &#x5F62;&#x5F0F;</li>
-<li>&#x6709;&#x7BC0;&#x5236;&#x5730;&#x4F7F;&#x7528;         from    a    import    B         &#x5F62;&#x5F0F;</li>
-<li>&#x5118;&#x91CF;&#x907F;&#x514D;&#x4F7F;&#x7528;         from    a    import    *     ,<code>&#x56E0;&#x70BA;&#x9019;&#x6703;&#x6C59;&#x67D3;&#x547D;&#x540D;&#x7A7A;&#x9593;</code></li>
-</ul>
-<h4 id="from-ospath-import--from-ospath-import-join-import-os-&#x5DEE;&#x7570;">from os.path import *, from os.path import join, import os &#x5DEE;&#x7570;</h4>
-<ul>
-<li>from os.path import join , os.path&#x4E0B;&#x7684;join&#x51FD;&#x6578;&#x76F4;&#x63A5;&#x4F7F;&#x7528;</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-keyword">from</span> os.path <span class="hljs-keyword">import</span> join
-<span class="hljs-comment">#join = 10 ## &#x885D;&#x5230;&#x4E00;&#x6A23;&#x540D;&#x7A31;</span>
-print(join(<span class="hljs-string">&apos;C:\\windows&apos;</span>, <span class="hljs-string">&apos;system32&apos;</span>))
-</code></pre>
-<ul>
-<li>from os.path import * , os.path &#x5E95;&#x4E0B;&#x6240;&#x6709;&#x51FD;&#x6578;&#x76F4;&#x63A5;&#x4F7F;&#x7528;</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-keyword">from</span> os.path <span class="hljs-keyword">import</span> &#xFF0A;
-<span class="hljs-comment">#join = 10 ## &#x885D;&#x5230;&#x4E00;&#x6A23;&#x540D;&#x7A31;</span>
-print(join(<span class="hljs-string">&apos;C:\\windows&apos;</span>, <span class="hljs-string">&apos;system32&apos;</span>))
-</code></pre>
-<ul>
-<li>import os , &#x5EFA;&#x8B70;&#x90FD;&#x4F7F;&#x7528;&#x9019;&#x500B;&#x907F;&#x514D;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x885D;&#x7A81;</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> os
-join = <span class="hljs-number">10</span>
-print(join)
-print(os.path.join(<span class="hljs-string">&apos;C:\\windows&apos;</span>, <span class="hljs-string">&apos;system32&apos;</span>))
-</code></pre>
-<p>Python &#x63D0;&#x4F9B;&#x7684; module&#xFF08;&#x6A21;&#x7D44;&#xFF09;&#x8207; package&#xFF08;&#x5957;&#x4EF6;&#xFF09;&#x662F;&#x5EFA;&#x7ACB;&#x67B6;&#x69CB;&#x7684;&#x57FA;&#x672C;&#x5143;&#x4EF6;&#xFF0C;&#x4F46;&#x5728;module&#x4E4B;&#x9593;&#x70BA;&#x4E86;&#x91CD;&#x8907;&#x4F7F;&#x7528;&#x4E00;&#x4E9B; function&#xFF08;&#x51FD;&#x6578;&#xFF09;&#x6216; class&#xFF08;&#x985E;&#x5225;&#xFF09;&#x800C;&#x5FC5;&#x9808;&#x4E92;&#x76F8; import&#xFF08;&#x532F;&#x5165;&#xFF09;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x4E00;&#x500B;&#x4E0D;&#x6CE8;&#x610F;&#x5C31;&#x6703;&#x6389;&#x5165;&#x6DF7;&#x4E82;&#x7684; import &#x9677;&#x9631;&#x3002;</p>
-<pre><code class="lang-sh">sample_package/
-&#x251C;&#x2500;&#x2500; __init__.py
-&#x251C;&#x2500;&#x2500; sample_module.py
-&#x2514;&#x2500;&#x2500; sample_module_import.py
-</code></pre>
-<pre><code class="lang-py"><span class="hljs-keyword">from</span> sample_module <span class="hljs-keyword">import</span> sample_func
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    sample_func()
-</code></pre>
-<p>&#x5728; Python &#x4E2D;&#xFF0C;import&#x3001;import as &#x8207; from import &#x662F;&#x9673;&#x8FF0;&#x53E5;&#xFF0C;&#x53EF;&#x4EE5;&#x51FA;&#x73FE;&#x5728;&#x7A0B;&#x5F0F;&#x4E2D;&#x9673;&#x8FF0;&#x53E5;&#x53EF;&#x51FA;&#x73FE;&#x7684;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#xFF0C;&#x5B83;&#x5011;&#x57FA;&#x672C;&#x4E0A;&#x7528;&#x4F86;&#x5728;&#x73FE;&#x6709;&#x7BC4;&#x7587;&#xFF08;Scope&#xFF09;&#x4E2D;&#x532F;&#x5165;&#x3001;&#x8A2D;&#x5B9A;&#x540D;&#x7A31;&#x7A7A;&#x9593;&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x5982;&#x679C;&#x5148;&#x524D;&#x7A0B;&#x5F0F;&#x7BC4;&#x4F8B;&#x662F;&#x64B0;&#x5BEB;&#x65BC; xmath.py &#x6A94;&#x6848;&#x4E2D;&#xFF0C;&#x90A3;&#x9EBC;&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B; import&#x3001;import as &#x8207; from import &#x7684;&#x4F7F;&#x7528;&#x5BE6;&#x4F8B;&#xFF0C;&#x5047;&#x8A2D;&#x9019;&#x4E9B;&#x7A0B;&#x5F0F;&#x662F;&#x64B0;&#x5BEB;&#x5728;&#x8207; xmath.py &#x76F8;&#x540C;&#x76EE;&#x9304;&#x7684;&#x53E6;&#x4E00;&#x500B; .py &#x6A94;&#x6848;&#xFF1A;</p>
-<ul>
-<li>xmath.py</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">max</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">if</span> a &gt; b <span class="hljs-keyword">else</span> b
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">min</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">if</span> a &lt; b <span class="hljs-keyword">else</span> b
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span><span class="hljs-params">(*numbers)</span>:</span> <span class="hljs-comment"># numbers &#x63A5;&#x53D7;&#x53EF;&#x8B8A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</span>
-    total = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> numbers:
-        total += number
-    <span class="hljs-keyword">return</span> total
-
-pi = <span class="hljs-number">3.141592653589793</span>
-e = <span class="hljs-number">2.718281828459045</span>
-</code></pre>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> xmath
-<span class="hljs-keyword">print</span> <span class="hljs-string">&apos;# import xmath&apos;</span>
-<span class="hljs-keyword">print</span> xmath.pi
-<span class="hljs-keyword">print</span> xmath.max(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>)
-<span class="hljs-keyword">print</span> xmath.sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
-
-<span class="hljs-keyword">print</span> <span class="hljs-string">&apos;# import xmath as math&apos;</span>
-<span class="hljs-keyword">import</span> xmath <span class="hljs-keyword">as</span> math <span class="hljs-comment"># &#x70BA; xmath &#x6A21;&#x7D44;&#x53D6;&#x5225;&#x540D;&#x70BA; math</span>
-<span class="hljs-keyword">print</span> math.e
-
-<span class="hljs-keyword">print</span> <span class="hljs-string">&apos;# from xmath import min&apos;</span>
-<span class="hljs-keyword">from</span> xmath <span class="hljs-keyword">import</span> min  <span class="hljs-comment"># &#x5C07; min &#x8907;&#x88FD;&#x81F3;&#x76EE;&#x524D;&#x6A21;&#x7D44;&#xFF0C;&#x4E0D;&#x5EFA;&#x8B70; from modu import *&#xFF0C;&#x6613;&#x9020;&#x6210;&#x540D;&#x7A31;&#x885D;&#x7A81;</span>
-<span class="hljs-keyword">print</span> min(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>)
-</code></pre>
-<h2 id="&#x51FD;&#x6578;">&#x51FD;&#x6578;</h2>
-<h4 id="&#x4E0D;&#x5B9A;&#x9577;&#x5EA6;&#x5F15;&#x6578;">&#x4E0D;&#x5B9A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</h4>
-<p>&#x4E8B;&#x5148;&#x53EF;&#x80FD;&#x4E0D;&#x77E5;&#x9053;&#x8981;&#x50B3;&#x5165;&#x7684;&#x5F15;&#x6578;&#x500B;&#x6578;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5B9A;&#x7FA9;&#x51FD;&#x5F0F;&#x7684;&#x53C3;&#x6578;&#x6642;&#x4F7F;&#x7528;<code>*</code>&#xFF0C;&#x8868;&#x793A;&#x8A72;&#x53C3;&#x6578;&#x63A5;&#x53D7;&#x4E0D;&#x5B9A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</p>
-<pre><code class="lang-py">pi = <span class="hljs-number">3.141592653589793</span>
-e = <span class="hljs-number">2.718281828459045</span>
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">max</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">if</span> a &gt; b <span class="hljs-keyword">else</span> b
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">min</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">if</span> a &lt; b:
-        <span class="hljs-keyword">return</span> a
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> b
-    <span class="hljs-comment">#return a if a &lt; b else b</span>
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span><span class="hljs-params">(*numbers)</span>:</span> <span class="hljs-comment"># numbers &#x63A5;&#x53D7;&#x53EF;&#x8B8A;&#x9577;&#x5EA6;&#x5F15;&#x6578;</span>
-    print(type(numbers))
-    total = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> numbers:
-        total += number
-    <span class="hljs-keyword">return</span> total
-
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    print(max(<span class="hljs-number">5</span>,<span class="hljs-number">100</span>))
-    print(min(<span class="hljs-number">5</span>,<span class="hljs-number">100</span>))
-    print(sum(<span class="hljs-number">5</span>,<span class="hljs-number">100</span>,<span class="hljs-number">300</span>,<span class="hljs-number">55</span>))
-</code></pre>
-<h4 id="&#x4F9D;&#x53C3;&#x6578;&#x500B;&#x6578;&#x4E0D;&#x540C;&#x4F86;&#x5340;&#x5225;&#x7684;&#x51FD;&#x5F0F;&#x91CD;&#x8F09;&#x6982;&#x5FF5;&#xFF0C;&#x5728;python&#x4E2D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9810;&#x8A2D;&#x5F15;&#x6578;&#xFF08;argument&#xFF09;&#x4F86;&#x89E3;&#x6C7A;">&#x4F9D;&#x53C3;&#x6578;&#x500B;&#x6578;&#x4E0D;&#x540C;&#x4F86;&#x5340;&#x5225;&#x7684;&#x51FD;&#x5F0F;&#x91CD;&#x8F09;&#x6982;&#x5FF5;&#xFF0C;&#x5728;Python&#x4E2D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9810;&#x8A2D;&#x5F15;&#x6578;&#xFF08;Argument&#xFF09;&#x4F86;&#x89E3;&#x6C7A;</h4>
-<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span><span class="hljs-params">(a, b, c = <span class="hljs-number">0</span>)</span>:</span>
-    <span class="hljs-keyword">return</span> a + b + c
-
-print(sum(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>))   <span class="hljs-comment"># &#x986F;&#x793A; 60</span>
-print(sum(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>))       <span class="hljs-comment"># &#x986F;&#x793A; 30</span>
-</code></pre>
-<h4 id="python-&#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;-&#x4E0D;&#x7528;return&#x76F4;&#x63A5;&#x4FEE;&#x6539;list--&#x4F46;&#x53EA;&#x6709;list&#x578B;&#x5225;&#x53EF;&#x6539;&#x52D5;&#x5176;&#x4ED6;&#x7684;&#x578B;&#x5225;&#x90FD;&#x7121;&#x6CD5;&#x6539;&#x52D5;">python &#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;, &#x4E0D;&#x7528;return&#x76F4;&#x63A5;&#x4FEE;&#x6539;list , &#x4F46;&#x53EA;&#x6709;list&#x578B;&#x5225;&#x53EF;&#x6539;&#x52D5;,&#x5176;&#x4ED6;&#x7684;&#x578B;&#x5225;&#x90FD;&#x7121;&#x6CD5;&#x6539;&#x52D5;</h4>
-<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_element</span><span class="hljs-params">(l)</span>:</span>
-    l.pop()
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">append_element</span><span class="hljs-params">(l, data)</span>:</span>
-    l.append(data)
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    a = [<span class="hljs-number">14</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>]
-    print(a)
-    remove_element(a)
-    remove_element(a)
-    print(a)
-    append_element(a, <span class="hljs-string">&apos;Hello world!!!!&apos;</span>) <span class="hljs-comment"># l = a, data = &apos;&apos;</span>
-    print(a)
-</code></pre>
-<h3 id="python-&#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;">python &#x51FD;&#x6578;&#x7684;&#x7269;&#x4EF6;&#x53C3;&#x6578;&#x9810;&#x8A2D;&#x662F;&#x50B3;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;</h3>
-<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_address</span><span class="hljs-params">(obj_addr)</span>:</span>
-    print(id(obj_addr))
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    a = [<span class="hljs-number">14</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>] <span class="hljs-comment"># list</span>
-    t = (<span class="hljs-number">13</span>,<span class="hljs-string">&apos;fff&apos;</span>) <span class="hljs-comment"># tuple</span>
-    s = set([<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>])  <span class="hljs-comment"># set</span>
-    d = {<span class="hljs-string">&apos;A&apos;</span>: <span class="hljs-number">22</span>, <span class="hljs-string">&apos;B&apos;</span>: <span class="hljs-string">&apos;hello&apos;</span>}
-    string = <span class="hljs-string">&apos;H:eqello&apos;</span>
-    i = <span class="hljs-number">10</span>
-    f = <span class="hljs-number">10.33</span>
-
-    print(id(a))
-    print(id(t))
-    print(id(s))
-    print(id(d))
-    print(id(string))
-    print(id(i))
-    print(id(f))
-
-    show_address(a)
-    show_address(t)
-    show_address(s)
-    show_address(d)
-    show_address(string)
-    show_address(i)
-    show_address(f)
-</code></pre>
-<h2 id="&#x8B8A;&#x6578;&#x7BC4;&#x570D;">&#x8B8A;&#x6578;&#x7BC4;&#x570D;</h2>
-<p><a href="https://openhome.cc/Gossip/Python/VariableScope.html" target="_blank">https://openhome.cc/Gossip/Python/VariableScope.html</a></p>
-<p>&#x8B8A;&#x6578;&#x6709;&#x53EF;&#x8996;&#x7BC4;&#x570D; &#xFF06; &#x751F;&#x547D;&#x9031;&#x671F;</p>
-<h3 id="&#x5340;&#x57DF;&#x8B8A;&#x6578;local-variable&#x7684;&#x7279;&#x6027;">&#x5340;&#x57DF;&#x8B8A;&#x6578;(local variable)&#x7684;&#x7279;&#x6027;</h3>
-<ol>
-<li>&#x51FD;&#x6578;&#x5167;&#x7684;&#x8B8A;&#x6578;<code>&#x542B;&#x8F38;&#x5165;&#x53C3;&#x6578;</code>&#x9810;&#x8A2D;&#x70BA;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x3002;</li>
-<li>&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x751F;&#x547D;&#x9031;&#x671F;&#x53EA;&#x5B58;&#x5728;&#x51FD;&#x6578;&#x57F7;&#x884C;&#x671F;&#x9593;&#xFF0C;&#x7576;&#x8A72;&#x51FD;&#x6578;&#x57F7;&#x884C;&#x5B8C;&#x7562;&#xFF0C;&#x51FD;&#x6578;&#x5167;&#x7684;&#x5340;
-&#x57DF;&#x8B8A;&#x6578;&#x5373;&#x6703;&#x5F9E;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x6D88;&#x5931;&#x3002;</li>
-<li>&#x51FD;&#x6578;&#x5916;&#x5176;&#x4ED6;&#x7A0B;&#x5F0F;&#x4E0D;&#x80FD;&#x8B80;&#x53D6;&#x51FD;&#x6578;&#x5167;&#x7684;&#x4EFB;&#x4F55;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#xFF0C;&#x9664;&#x975E;&#x51FD;&#x6578;&#x5167;&#x7684;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x8A2D;
-&#x5B9A;&#x70BA;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x3002;</li>
-</ol>
-<h3 id="&#x5168;&#x57DF;&#x8B8A;&#x6578;global-variable-&#x7684;&#x7279;&#x6027;">&#x5168;&#x57DF;&#x8B8A;&#x6578;(global variable) &#x7684;&#x7279;&#x6027;</h3>
-<ol>
-<li>&#x51FD;&#x6578;&#x5916;&#x7684;&#x8B8A;&#x6578;&#x5747;&#x70BA;&#x5168;&#x57DF;&#x8B8A;&#x6578;</li>
-<li>&#x6240;&#x6709;&#x7684;&#x51FD;&#x6578;&#x90FD;&#x6709;&#x6B0A;&#x8B80;&#x53D6;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#xFF0C;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8B80;&#x53D6;&#x6B0A;&#x50C5;&#x9650;&#x65BC;&#x6240;&#x5C6C;&#x51FD;&#x6578;&#x3002;</li>
-<li>&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x751F;&#x547D;&#x9031;&#x671F;&#x5F9E;&#x8A72;&#x8B8A;&#x6578;&#x7522;&#x751F;&#x958B;&#x59CB;&#x5373;&#x6703;&#x5B58;&#x5728;&#x65BC;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#xFF0C;&#x76F4;&#x5230;&#x96E2;&#x958B;
-python &#x4E3B;&#x7A0B;&#x5F0F;&#xFF0C;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x624D;&#x6703;&#x5F9E;&#x8A18;&#x61B6;&#x4E2D;&#x6D88;&#x5931;&#x3002;</li>
-</ol>
-<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_show_global</span><span class="hljs-params">()</span>:</span>
-    print(id(b))
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    <span class="hljs-keyword">global</span> b
-    b = <span class="hljs-number">10</span>
-
-    print(id(b))
-    test_show_global()
-</code></pre>
-<h3 id=""> </h3>
-<pre><code class="lang-py">x = <span class="hljs-number">10</span>       &#x3000;&#x3000;<span class="hljs-comment"># &#x5168;&#x57DF;</span>
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer</span><span class="hljs-params">()</span>:</span>
-   y = <span class="hljs-number">20</span>        <span class="hljs-comment"># &#x5728; outer() &#x51FD;&#x5F0F;&#x7BC4;&#x570D;</span>
-
-   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner</span><span class="hljs-params">()</span>:</span>
-       z = <span class="hljs-number">30</span>    <span class="hljs-comment"># &#x5728; inner() &#x51FD;&#x5F0F;&#x7BC4;&#x570D;</span>
-       print(x)  <span class="hljs-comment"># &#x5167;&#x5EFA;&#x7BC4;&#x570D; print&#xFF0C;&#x5168;&#x57DF;&#x7684; x</span>
-   &#x3000;&#x3000;print(y)  <span class="hljs-comment"># &#x5167;&#x5EFA;&#x7BC4;&#x570D; print&#xFF0C;&#x5916;&#x5305; outer() &#x51FD;&#x5F0F;&#x7684; y</span>
-
-   print(x)       <span class="hljs-comment"># &#x5167;&#x5EFA;&#x7BC4;&#x570D; print&#xFF0C;&#x5168;&#x57DF;&#x7684; x</span>
-</code></pre>
-<h4 id="&#x5728;python-3&#x4E2D;&#x65B0;&#x589E;&#x4E86;nonlocal&#xFF0C;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x6307;&#x660E;&#x8B8A;&#x6578;&#x4E26;&#x975E;&#x5340;&#x57DF;&#x8B8A;&#x6578;">&#x5728;Python 3&#x4E2D;&#x65B0;&#x589E;&#x4E86;<code>nonlocal</code>&#xFF0C;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x6307;&#x660E;&#x8B8A;&#x6578;&#x4E26;&#x975E;&#x5340;&#x57DF;&#x8B8A;&#x6578;</h4>
-<pre><code class="lang-py">x = <span class="hljs-number">10</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer</span><span class="hljs-params">()</span>:</span>
-   x = <span class="hljs-number">100</span>         <span class="hljs-comment"># &#x9019;&#x662F;&#x5728; outer() &#x51FD;&#x5F0F;&#x7BC4;&#x570D;&#x7684; x</span>
-   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner</span><span class="hljs-params">()</span>:</span>
-       <span class="hljs-keyword">nonlocal</span> x
-       x = <span class="hljs-number">1000</span>    <span class="hljs-comment"># &#x6539;&#x8B8A;&#x7684;&#x662F; outer() &#x51FD;&#x5F0F;&#x7684; x</span>
-   inner()
-   print(x)        <span class="hljs-comment"># &#x986F;&#x793A; 1000</span>
-
-outer()
-print(x)           <span class="hljs-comment"># &#x986F;&#x793A; 10</span>
-</code></pre>
-<h4 id="&#x8A18;&#x5F97;&#x8B8A;&#x6578;&#x7BC4;&#x570D;&#x7684;&#x5EFA;&#x7ACB;&#x662F;&#x5728;&#x6307;&#x5B9A;&#x6642;&#x767C;&#x751F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x53D6;&#x7528;&#x6642;&#x767C;&#x751F;&#xFF0C;&#x6240;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x9019;&#x500B;&#x4F8B;&#x5B50;">&#x8A18;&#x5F97;<code>&#x8B8A;&#x6578;&#x7BC4;&#x570D;</code>&#x7684;&#x5EFA;&#x7ACB;&#x662F;&#x5728;<code>&#x6307;&#x5B9A;</code>&#x6642;&#x767C;&#x751F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x53D6;&#x7528;&#x6642;&#x767C;&#x751F;&#xFF0C;&#x6240;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x9019;&#x500B;&#x4F8B;&#x5B50;</h4>
-<pre><code class="lang-py">x = <span class="hljs-number">20</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">some</span><span class="hljs-params">(x = x)</span>:</span>
-    print(id(x))
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    some(<span class="hljs-number">30</span>)
-    print(id(x))
-</code></pre>
-<h2 id="debug-tips">debug Tips</h2>
-<ul>
-<li>pycallgraph</li>
-</ul>
-<pre><code class="lang-py">pip install pycallgraph graphviz
-pycallgraph graphviz -- ./test1.py
-pycallgraph.png &#x7522;&#x751F;&#x4E00;&#x5F35;function call graph
-</code></pre>
-<ul>
-<li>pudb  # python -m pudb  xxxx.py</li>
-<li>inspect &#x6A21;&#x7D44;&#x5728; Python &#x5FEB;&#x901F;&#x9664;&#x932F;</li>
-<li>pprint</li>
-<li>pythontutor
-<a href="http://www.pythontutor.com/visualize.html#mode=display" target="_blank">http://www.pythontutor.com/visualize.html#mode=display</a>  // &#x7DDA;&#x4E0A;&#x7248;</li>
-</ul>
-<ul>
-<li>pudb &#x7A0B;&#x5F0F;&#x78BC;&#x52A0;&#x5165;&#x4E2D;&#x65B7;&#x9EDE;</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> pudb
-pudb.set_trace()
-</code></pre>
-<ul>
-<li>TOOL OnlinePythonTutor</li>
-</ul>
-<pre><code class="lang-`sh">git clone https://github.com/pgbovine/OnlinePythonTutor
-
-pip install bottle # make sure the bottle webserver (http://bottlepy.org/) is installed
-cd OnlinePythonTutor/v5-unity/
-python bottle_server.py
-http://localhost:8003/live.html#mode=edit   // &#x958B;&#x555F;
-</code></pre>
-<h2 id="&#x597D;&#x7528;&#x7684;&#x51FD;&#x6578;">&#x597D;&#x7528;&#x7684;&#x51FD;&#x6578;</h2>
-<p><code>type() &#x770B;&#x7269;&#x4EF6;&#x578B;&#x614B;</code><br> 
-<code>id() &#x770B;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;</code><br></p>
-<pre><code class="lang-py">If you mean the directory of the script being run:
-<span class="hljs-keyword">import</span> os
-os.path.dirname(os.path.abspath(__file__))
-
-If you mean the current working directory:
-<span class="hljs-keyword">import</span> os
-os.getcwd()
-</code></pre>
-<h2 id="&#x5E38;&#x898B;&#x932F;&#x8AA4;&#x8A0A;&#x606F;">&#x5E38;&#x898B;&#x932F;&#x8AA4;&#x8A0A;&#x606F;</h2>
-<pre><code class="lang-sh">TabError: inconsistent use of tabs and spaces <span class="hljs-keyword">in</span> indentation  // &#x683C;&#x5F0F;&#x6C92;&#x5C0D;&#x597D;
-</code></pre>
 
                     
                     </section>
