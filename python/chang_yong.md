@@ -1,4 +1,5 @@
-# 常用
+
+# practice
 
 
 ##`Python都是物件` 或說是把任何資料包裝成物件，以型別區分
@@ -13,36 +14,13 @@ a = 'hello'  # class str 型態
 
 
 
-## Print a string as hex bytes
-```py
-For Python 2.x:
-':'.join(x.encode('hex') for x in 'Hello World!')
 
-The code above will not work with Python 3.x, for 3.x, the code below will work:
-':'.join(hex(ord(x))[2:] for x in '中文')
-
-hex(ord('中'))  # python3 str 預設是  unicode 編碼
-```
-
-```py
-In [25]: text = '中文'   # python3 str 預設是  unicode 編碼
-In [26]: b_str = text.encode('big5') # 轉成 bytes 
-In [27]: b_str
-Out[27]: b'\xa4\xa4\xa4\xe5'  
-In [31]: unicode_str = b_str.decode('big5')  # 從 big5 的 byts decode 回 str  python3 str 預設是  unicode 編碼
-In [32]: unicode_str
-Out[33]: '中文'
-In [34]: ':'.join(hex(ord(x))[2:] for x in unicode_str)  # 查看 unicode bytes 格式
-Out[34]: '4e2d:6587'
-```
-
-
-## Python五種基本資料結構型態 list set dictionary tuple string `只有list 可變` 
+## Python五種基本資料結構型態 list set dictionary tuple string `只有list, dictionary可變` 
 
 
 - 不可變(mutable) :建立之後,其值就不會改變。如「 3 + 5 」會建立新int物件
 - 不可變: int、float、str、tuple
-- 可變(immutable):建立後,其內容仍可改變   ex : 可變:list
+- 可變(immutable):建立後,其內容仍可改變   ex : `可變:list , dictionary`
 
 
 Python中的元組(Tuple)類似於Java中的陣列,一旦新增了一個 tuple，就`不能以任何方式改變它`。
@@ -318,6 +296,42 @@ print(high_total)
 
 這是因為 Python 3.x 中，python 直譯器預期的 .py 編碼，`預設是 UTF-8`，而在 Ubuntu 15.10 中，預設採用的文字編碼也是 UTF-8，這時在 .py 檔案中撰寫中文，並不會有問題發生，然而，你知道在 Windows 中，使用記事本編輯文字檔案時，預設的文字編碼是什麼嗎？
 
+![](images/befunky-collagepython-1600x1199.png)
+
+### Print a string as hex bytes
+```py
+For Python 2.x:
+':'.join(x.encode('hex') for x in 'Hello World!')
+
+The code above will not work with Python 3.x, for 3.x, the code below will work:
+':'.join(hex(ord(x))[2:] for x in '中文')
+
+hex(ord('中'))  # python3 str 預設是  unicode 編碼
+```
+
+```py
+In [25]: text = '中文'   # python3 str 預設是  unicode 編碼
+In [26]: b_str = text.encode('big5') # 轉成 bytes 
+In [27]: b_str
+Out[27]: b'\xa4\xa4\xa4\xe5'  
+In [31]: unicode_str = b_str.decode('big5')  # 從 big5 的 byts decode 回 str  python3 str 預設是  unicode 編碼
+In [32]: unicode_str
+Out[33]: '中文'
+In [34]: ':'.join(hex(ord(x))[2:] for x in unicode_str)  # 查看 unicode bytes 格式
+Out[34]: '4e2d:6587'
+```
+
+### 與外界溝通 - decode與encode
+
+`Python 3.x 中的字串都是Unicode`
+
+在上面我們學到了如何表示 unicode 字串，但是事實上是， unicode 字串只能存在程式的內部，並沒有一個統一的表達方式，並沒有辦法和外界溝通，因此當我們想把字串存到檔案裡，或著透過網路傳給別人，得先將 unicode str 字串編碼成成 str (bytes)  字串，相對地，當我們想開啟某種編碼的檔案時，我們得進行解碼
+
+Python編碼或解碼的方式很簡單，透過encode與decode的函數呼叫，我們可以在 unicode str 和 str(bytes) 兩種之間進行轉換
+
+
+![](images/decode_encode1.png)
+
 
 
 ### 關於Python腳本開頭兩行的
@@ -436,339 +450,6 @@ with open("Big5File.txt", 'r', encoding='big5') as fp:
     for line in fp:
         print(line)
 ```
-
-
-## 物件導向三大特色
-
-https://kaochenlong.com/2011/10/13/python-oop/
-
-1. 資料封裝(Encapsulation)
-
-   簡單講，資料封裝就是將資料分成私用(Private)、保護(Protected)、公用(Public)等，實踐 Information hiding 概念, `避免程式各個物件互相干擾`，降低程式的複雜度及維護上的困難度。
-
-2. 繼承(Inheritance)
-
-   有繼承的關係後，父類別 (Super class) 中的資料 (Data) 或方法 (Method) 在次子類(Subclass)就可以繼承使用，次子類別的次子類別也可以繼承使用，最後即能達到資料重覆使用的目的。
-
-3. 多型(Polymorphism)
-
-   多型(Polymorphism) 代表能夠在執行階段，物件能夠依照不同情況變換資料型態，換句話說，多型是指一個物件參考可以在不同環境下，扮演不同角色的特性，指向不同的物件實體，可 透過實作多個繼承或介面來實現父類別，並使用Override或Overload來達成。
-
-
-封裝、繼承、多型為物件導向三大基礎 。 `此三者具有次序性 ， 沒有封裝就不可能有繼承 、沒有繼承就不可能有多型`。
-
-封裝 (encapsulation) 的目的是將 Class 裡的屬性用 private 隱藏，只能透過public的方法存取資料。
-`(隱藏程式細節，避免直接處理造成的困擾。使開發與維護更容易)`
-
-繼承 (Inheritance) 的目的，是要達到「程式碼再用」(Code Rause) 或「介面再用」。
-透過繼承，可以適當的切割類別，`並在衍生類別中重複使用、擴充和修改基底類別中定義的行為，又不破壞原先基底類別設計`。
-
-多型 (Polymorphism) 指的是不同型態的物件，定義相同的操作介面，由於被呼叫者 (Callee) 有著相同的介面，呼叫者並不用指定特別型別，只需針對介面進行操作，實際執行的物件則在runtime決定，藉此增加程式碼的彈性。
-
-##何謂物件（Object）？
-https://developer.mozilla.org/zh-TW/docs/Learn/Drafts/Python/Quickly_Learn_Object_Oriented_Programming
-
-創建物件就像是創造你自己的變數型別（variable type）。
-
-這個物件可以包含好幾個變數（稱為屬性，attributes/properties），裡面儲存不同型別的資料。這個物件也可以包含已經自己設定好的函式（稱為 methods），用於操作物件的屬性。
-
-你可以用`同一個型別去創建很多個物件（同一個類別），每個物件都有屬於自己的數值`。
-
-###類別（ Class ），就是一個抽象的`模板`，
-
-###`實例(Instance)` 就是根據這個模板創造出來的資訊，像是王先生、蔡小姐等具體的對象，每個對象擁有`相同的方法`，但是各自所擁有的`資料能不同`。
-
-```py
-class BankAccount:
-    """ Class for Bank Accounts"""
-    # The __data is private 
-    __data = 100
-    __userName = ''
-    __balance = 0
-    type = 'Normal Account'    # variable shared by all objects of the class
-
-    # 這個特殊的方法 __init__() 會在物件被創見時自動執行。
-    def __init__(self, name, balance):
-        # default variables unique to each object:
-        self.__userName = name
-        self.__balance = balance
-
-    def __del__(self):
-        print("Goodbye Python!")
-
-    # Object Methods:
-    def showBalance(self):
-        print(self.__balance)
-        return
-
-    def withdrawMoney(self, amount):
-        self.__balance -= amount
-        return
-
-    def depositMoney(self, amount):
-        self.__balance += amount
-        return
-
-    # 對外窗口取得 private data 
-    def getData(self):
-        return self.__data
-
-    def showUserName(self):
-        print(self.__userName)
-
-    def showBalance(self):
-        print(self.__balance)
-
-if __name__ == '__main__':
-    jason_yao_instance = BankAccount("Jason Yao", 10000)    # create new instance of ClassName
-    adan_yao_instance = BankAccount("Adan Yao", 20000)    # create another instance
-
-    # access object properties
-    jason_yao_instance.showUserName()#print(jason_yao_instance.__userName)   #'Im 1'
-    adan_yao_instance.showUserName()#print(adan_yao_instance.__userName)    #'Me 2'
-
-    # access object methods
-    jason_yao_instance.depositMoney(100)
-    adan_yao_instance.depositMoney(200)
-
-    jason_yao_instance.showBalance()#print(jason_yao_instance.__balance)   # 'Im 1'
-    adan_yao_instance.showBalance()#print(adan_yao_instance.__balance)    # 'Me 2'
-
-    # same as:
-    print(jason_yao_instance.type)    # 'Normal Account'
-    print(adan_yao_instance.type)    # 'Normal Account'
-
-    print(jason_yao_instance.getData())    # 'Normal Account'
-    print(adan_yao_instance.getData())    # 'Normal Account'
-
-    print(id(jason_yao_instance))
-    print(id(adan_yao_instance))
-
-```
-
-## python 物件導向「Class 」與「Instance」
-物件導向第一個特性：封裝
-物件導向的一個重要的特點就是`封裝`。
-
-在上面 Animal 的這個類別當中，每個實例就擁有自己的 Name 、 sound 、 age 這些資訊，我們可以通過一些函數來呼叫這些資訊，舉例來說，想要聽到這個動物的叫聲:
-print(Dog.sound)
-
-
-```py
-# -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
-class Animal(object):
-    """
-    宣告一個抽象的類別 Animal 
-    """
-    # __init__是 python 當中的一個特殊方法，可以在一開始時，就將這個累所需要的屬性綁定，我們稱之為初始化
-    def __init__(self, age, sound, name):
-        """
-        假設動物有三種屬性，年齡，叫聲，姓名，當然你也可以舉更多屬性
-        """
-        self.age = age
-        self.sound = sound
-        self.__name = name
-
-    # 初始化屬性之後，動物可能會有一些動作，我們可以把它看成物件導向當中的方法（ Method ）
-    def run(self):
-        '''動物跑步的方法'''
-        pass
-
-    def Animal_sounds(self):
-        '''動物叫的方法'''
-        print("叫聲:" + self.sound)
-
-    def showName(self):
-        print(self.__name)
-
-    def showAge(self):
-        print(self.age)
-
-if __name__ == '__main__':
-    # 這樣我們就創造了一隻 叫做 jj 的狗 ，年齡是 18 歲，叫的聲音是 wof
-    Dog = Animal('8', '汪', '拉西') # The Dog is instance
-    Dog.Animal_sounds()
-    Dog.showName()
-    Dog.showAge()
-
-    Cat = Animal('5', '喵', '病貓')
-    Cat.Animal_sounds()
-    Cat.showName()
-    Cat.showAge()
-
-```
-
-
-### 繼承例子
-
-```py
-# -*- coding: utf-8 -*-
-class Animal(object):
-    """
-    宣告一個抽象的類別 Animal 
-    """
-    # __init__是 python 當中的一個特殊方法，可以在一開始時，就將這個累所需要的屬性綁定，我們稱之為初始化
-    def __init__(self, age, sound, name):
-        """
-        假設動物有三種屬性，年齡，叫聲，姓名，當然你也可以舉更多屬性
-        """
-        self.age = age
-        self.sound = sound
-        self.__name = name
-
-    # 初始化屬性之後，動物可能會有一些動作，我們可以把它看成物件導向當中的方法（ Method ）
-    def run(self):
-        '''動物跑步的方法'''
-        pass
-
-    def Animal_sounds(self):
-        '''動物叫的方法'''
-        print("叫聲:" + self.sound)
-
-    def showName(self):
-        print(self.__name)
-
-    def showAge(self):
-        print(self.age)
-
-class Dog(Animal):
-    def __init__(self, age, sound, name, run_):
-        super(Dog, self).__init__(age, sound, name) # 呼叫父類別__init__()
-        self.__run = run_
-
-    def run(self):
-        print(self.__run)
-
-class Fish(Animal):
-    def __init__(self, age, sound, name, run_):
-        super(Fish, self).__init__(age, sound, name) # 呼叫父類別__init__()
-        self.__run = run_
-
-    def run(self):
-        print(self.__run)
-
-if __name__ == '__main__':
-    dog = Dog(10, '旺', '拉西', '跑')
-    fish = Fish(5, '', '食人魚', '遊')
-
-    dog.Animal_sounds()
-    dog.showName()
-    dog.showAge()
-    dog.run()
-
-    fish.Animal_sounds()
-    fish.showName()
-    fish.showAge()
-    fish.run()
-```
-
-
-#### 深入 super()
-
-
-看了上面的使用，你可能會覺得 super 的使用很簡單，無非就是獲取了父類，並調用父類的方法。其實，在上面的情況下，super 獲得的類剛好是父類，但在其他情況就不一定了，super 其實和父類沒有實質性的關聯。
-
-讓我們看一個稍微複雜的例子，涉及到多重繼承，代碼如下：
-
-```py
-class Base(object):
-    def __init__(self):
-        print("enter Base")
-        print("leave Base")
-
-class A(Base):
-    def __init__(self):
-        print("enter A")
-        super(A, self).__init__()
-        print("leave A")
-
-class B(Base):
-    def __init__(self):
-        print("enter B")
-        super(B, self).__init__()
-        print("leave B")
-
-class C(A, B):
-    def __init__(self):
-        print("enter C")
-        super(C, self).__init__()
-        print("leave C")
-
-
-c = C()
-```
-
-其中，Base 是父類，A, B 繼承自 Base, C 繼承自 A, B，它們的繼承關係是一個典型的『菱形繼承』，如下：
-
-```sh
-      Base
-      /  \
-     /    \
-    A      B
-     \    /
-      \  /
-       C
-```
-現在，讓我們看一下使用：
-
-
-```sh
-enter C
-enter A
-enter B
-enter Base
-leave Base
-leave B
-leave A
-leave C
-```
-
-
-### 多型
-
-```py
-class Demo:
-    def __init__(self, i):
-        self.i = i
-     
-    def __str__(self):
-        return str(self.i)
-          
-    def hello(self):
-        print("hello " + self.__str__())
- 
-class SubDemo1(Demo):
-    def __init__(self, i, j):
-        super().__init__(i)
-        self.j = j
-     
-    def __str__(self):
-        return super().__str__() + str(self.j)
- 
-class SubDemo2(Demo):
-    def __init__(self, i, j):
-        super().__init__(i)
-        self.j = j
-        self.k = str(self.i) + str(self.j)
-     
-    def __str__(self):
-        return self.k
- 
-a = SubDemo1(22, 33)
-b = SubDemo2(44, "55")
-a.hello()
-b.hello()
-```
-
-
-SubDemo1 與 SubDemo2 繼承 (inherit) 自 Demo ，因此兩個子類別也都繼承了 hello() 方法 (method) ，雖然 SubDemo1 與 SubDemo2 所建立的物件各自是不同型態，然而由繼承關係兩種型態可通用 hello() 。
-
-### 在如何確定一個物體的大小？
-
-
-答案，"只使用 sys.getsizeof"不是完全完整的答案。
-這對於直接的內置對象是有效的，但它並不解釋它們可能包含什麼，特別是數字和字元串之外的類型。
 
 
 
@@ -1111,3 +792,337 @@ os.getcwd()
 ```sh
 TabError: inconsistent use of tabs and spaces in indentation  // 格式沒對好
 ```
+
+## 物件導向三大特色
+
+https://kaochenlong.com/2011/10/13/python-oop/
+
+1. 資料封裝(Encapsulation)
+
+   簡單講，資料封裝就是將資料分成私用(Private)、保護(Protected)、公用(Public)等，實踐 Information hiding 概念, `避免程式各個物件互相干擾`，降低程式的複雜度及維護上的困難度。
+
+2. 繼承(Inheritance)
+
+   有繼承的關係後，父類別 (Super class) 中的資料 (Data) 或方法 (Method) 在次子類(Subclass)就可以繼承使用，次子類別的次子類別也可以繼承使用，最後即能達到資料重覆使用的目的。
+
+3. 多型(Polymorphism)
+
+   多型(Polymorphism) 代表能夠在執行階段，物件能夠依照不同情況變換資料型態，換句話說，多型是指一個物件參考可以在不同環境下，扮演不同角色的特性，指向不同的物件實體，可 透過實作多個繼承或介面來實現父類別，並使用Override或Overload來達成。
+
+
+封裝、繼承、多型為物件導向三大基礎 。 `此三者具有次序性 ， 沒有封裝就不可能有繼承 、沒有繼承就不可能有多型`。
+
+封裝 (encapsulation) 的目的是將 Class 裡的屬性用 private 隱藏，只能透過public的方法存取資料。
+`(隱藏程式細節，避免直接處理造成的困擾。使開發與維護更容易)`
+
+繼承 (Inheritance) 的目的，是要達到「程式碼再用」(Code Rause) 或「介面再用」。
+透過繼承，可以適當的切割類別，`並在衍生類別中重複使用、擴充和修改基底類別中定義的行為，又不破壞原先基底類別設計`。
+
+多型 (Polymorphism) 指的是不同型態的物件，定義相同的操作介面，由於被呼叫者 (Callee) 有著相同的介面，呼叫者並不用指定特別型別，只需針對介面進行操作，實際執行的物件則在runtime決定，藉此增加程式碼的彈性。
+
+##何謂物件（Object）？
+https://developer.mozilla.org/zh-TW/docs/Learn/Drafts/Python/Quickly_Learn_Object_Oriented_Programming
+
+創建物件就像是創造你自己的變數型別（variable type）。
+
+這個物件可以包含好幾個變數（稱為屬性，attributes/properties），裡面儲存不同型別的資料。這個物件也可以包含已經自己設定好的函式（稱為 methods），用於操作物件的屬性。
+
+你可以用`同一個型別去創建很多個物件（同一個類別），每個物件都有屬於自己的數值`。
+
+###類別（ Class ），就是一個抽象的`模板`，
+
+###`實例(Instance)` 就是根據這個模板創造出來的資訊，像是王先生、蔡小姐等具體的對象，每個對象擁有`相同的方法`，但是各自所擁有的`資料能不同`。
+
+```py
+class BankAccount:
+    """ Class for Bank Accounts"""
+    # The __data is private 
+    __data = 100
+    __userName = ''
+    __balance = 0
+    type = 'Normal Account'    # variable shared by all objects of the class
+
+    # 這個特殊的方法 __init__() 會在物件被創見時自動執行。
+    def __init__(self, name, balance):
+        # default variables unique to each object:
+        self.__userName = name
+        self.__balance = balance
+
+    def __del__(self):
+        print("Goodbye Python!")
+
+    # Object Methods:
+    def showBalance(self):
+        print(self.__balance)
+        return
+
+    def withdrawMoney(self, amount):
+        self.__balance -= amount
+        return
+
+    def depositMoney(self, amount):
+        self.__balance += amount
+        return
+
+    # 對外窗口取得 private data 
+    def getData(self):
+        return self.__data
+
+    def showUserName(self):
+        print(self.__userName)
+
+    def showBalance(self):
+        print(self.__balance)
+
+if __name__ == '__main__':
+    jason_yao_instance = BankAccount("Jason Yao", 10000)    # create new instance of ClassName
+    adan_yao_instance = BankAccount("Adan Yao", 20000)    # create another instance
+
+    # access object properties
+    jason_yao_instance.showUserName()#print(jason_yao_instance.__userName)   #'Im 1'
+    adan_yao_instance.showUserName()#print(adan_yao_instance.__userName)    #'Me 2'
+
+    # access object methods
+    jason_yao_instance.depositMoney(100)
+    adan_yao_instance.depositMoney(200)
+
+    jason_yao_instance.showBalance()#print(jason_yao_instance.__balance)   # 'Im 1'
+    adan_yao_instance.showBalance()#print(adan_yao_instance.__balance)    # 'Me 2'
+
+    # same as:
+    print(jason_yao_instance.type)    # 'Normal Account'
+    print(adan_yao_instance.type)    # 'Normal Account'
+
+    print(jason_yao_instance.getData())    # 'Normal Account'
+    print(adan_yao_instance.getData())    # 'Normal Account'
+
+    print(id(jason_yao_instance))
+    print(id(adan_yao_instance))
+
+```
+
+## python 物件導向「Class 」與「Instance」
+物件導向第一個特性：封裝
+物件導向的一個重要的特點就是`封裝`。
+
+在上面 Animal 的這個類別當中，每個實例就擁有自己的 Name 、 sound 、 age 這些資訊，我們可以通過一些函數來呼叫這些資訊，舉例來說，想要聽到這個動物的叫聲:
+print(Dog.sound)
+
+
+```py
+# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+class Animal(object):
+    """
+    宣告一個抽象的類別 Animal 
+    """
+    # __init__是 python 當中的一個特殊方法，可以在一開始時，就將這個累所需要的屬性綁定，我們稱之為初始化
+    def __init__(self, age, sound, name):
+        """
+        假設動物有三種屬性，年齡，叫聲，姓名，當然你也可以舉更多屬性
+        """
+        self.age = age
+        self.sound = sound
+        self.__name = name
+
+    # 初始化屬性之後，動物可能會有一些動作，我們可以把它看成物件導向當中的方法（ Method ）
+    def run(self):
+        '''動物跑步的方法'''
+        pass
+
+    def Animal_sounds(self):
+        '''動物叫的方法'''
+        print("叫聲:" + self.sound)
+
+    def showName(self):
+        print(self.__name)
+
+    def showAge(self):
+        print(self.age)
+
+if __name__ == '__main__':
+    # 這樣我們就創造了一隻 叫做 jj 的狗 ，年齡是 18 歲，叫的聲音是 wof
+    Dog = Animal('8', '汪', '拉西') # The Dog is instance
+    Dog.Animal_sounds()
+    Dog.showName()
+    Dog.showAge()
+
+    Cat = Animal('5', '喵', '病貓')
+    Cat.Animal_sounds()
+    Cat.showName()
+    Cat.showAge()
+
+```
+
+
+### 繼承例子
+
+```py
+# -*- coding: utf-8 -*-
+class Animal(object):
+    """
+    宣告一個抽象的類別 Animal 
+    """
+    # __init__是 python 當中的一個特殊方法，可以在一開始時，就將這個累所需要的屬性綁定，我們稱之為初始化
+    def __init__(self, age, sound, name):
+        """
+        假設動物有三種屬性，年齡，叫聲，姓名，當然你也可以舉更多屬性
+        """
+        self.age = age
+        self.sound = sound
+        self.__name = name
+
+    # 初始化屬性之後，動物可能會有一些動作，我們可以把它看成物件導向當中的方法（ Method ）
+    def run(self):
+        '''動物跑步的方法'''
+        pass
+
+    def Animal_sounds(self):
+        '''動物叫的方法'''
+        print("叫聲:" + self.sound)
+
+    def showName(self):
+        print(self.__name)
+
+    def showAge(self):
+        print(self.age)
+
+class Dog(Animal):
+    def __init__(self, age, sound, name, run_):
+        super(Dog, self).__init__(age, sound, name) # 呼叫父類別__init__()
+        self.__run = run_
+
+    def run(self):
+        print(self.__run)
+
+class Fish(Animal):
+    def __init__(self, age, sound, name, run_):
+        super(Fish, self).__init__(age, sound, name) # 呼叫父類別__init__()
+        self.__run = run_
+
+    def run(self):
+        print(self.__run)
+
+if __name__ == '__main__':
+    dog = Dog(10, '旺', '拉西', '跑')
+    fish = Fish(5, '', '食人魚', '遊')
+
+    dog.Animal_sounds()
+    dog.showName()
+    dog.showAge()
+    dog.run()
+
+    fish.Animal_sounds()
+    fish.showName()
+    fish.showAge()
+    fish.run()
+```
+
+
+#### 深入 super()
+
+
+看了上面的使用，你可能會覺得 super 的使用很簡單，無非就是獲取了父類，並調用父類的方法。其實，在上面的情況下，super 獲得的類剛好是父類，但在其他情況就不一定了，super 其實和父類沒有實質性的關聯。
+
+讓我們看一個稍微複雜的例子，涉及到多重繼承，代碼如下：
+
+```py
+class Base(object):
+    def __init__(self):
+        print("enter Base")
+        print("leave Base")
+
+class A(Base):
+    def __init__(self):
+        print("enter A")
+        super(A, self).__init__()
+        print("leave A")
+
+class B(Base):
+    def __init__(self):
+        print("enter B")
+        super(B, self).__init__()
+        print("leave B")
+
+class C(A, B):
+    def __init__(self):
+        print("enter C")
+        super(C, self).__init__()
+        print("leave C")
+
+
+c = C()
+```
+
+其中，Base 是父類，A, B 繼承自 Base, C 繼承自 A, B，它們的繼承關係是一個典型的『菱形繼承』，如下：
+
+```sh
+      Base
+      /  \
+     /    \
+    A      B
+     \    /
+      \  /
+       C
+```
+現在，讓我們看一下使用：
+
+
+```sh
+enter C
+enter A
+enter B
+enter Base
+leave Base
+leave B
+leave A
+leave C
+```
+
+
+### 多型
+
+```py
+class Demo:
+    def __init__(self, i):
+        self.i = i
+     
+    def __str__(self):
+        return str(self.i)
+          
+    def hello(self):
+        print("hello " + self.__str__())
+ 
+class SubDemo1(Demo):
+    def __init__(self, i, j):
+        super().__init__(i)
+        self.j = j
+     
+    def __str__(self):
+        return super().__str__() + str(self.j)
+ 
+class SubDemo2(Demo):
+    def __init__(self, i, j):
+        super().__init__(i)
+        self.j = j
+        self.k = str(self.i) + str(self.j)
+     
+    def __str__(self):
+        return self.k
+ 
+a = SubDemo1(22, 33)
+b = SubDemo2(44, "55")
+a.hello()
+b.hello()
+```
+
+
+SubDemo1 與 SubDemo2 繼承 (inherit) 自 Demo ，因此兩個子類別也都繼承了 hello() 方法 (method) ，雖然 SubDemo1 與 SubDemo2 所建立的物件各自是不同型態，然而由繼承關係兩種型態可通用 hello() 。
+
+### 在如何確定一個物體的大小？
+
+
+答案，"只使用 sys.getsizeof"不是完全完整的答案。
+這對於直接的內置對象是有效的，但它並不解釋它們可能包含什麼，特別是數字和字元串之外的類型。
+
+
