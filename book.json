@@ -1,3 +1,6 @@
 {
+    "gitbook": ">=2.0.0",
+    "title": "demo book",
+    "description": "learn gitbook",
     "plugins" : [ "google_code_prettify", "collapsible-menu",  "livereload", "maxiang", "-search" ]
 }
